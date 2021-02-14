@@ -11,7 +11,7 @@ public class Database {
     private static Connection connection = null;
 
     private Database() throws SQLException {
-        String connectionURL = "jdbc:sqlite:"+System.getProperty("user.home")+"/bazapodataka.db";
+        String connectionURL = "jdbc:mysql://localhost/filemanager?user=root&password=root&serverTimezone=GMT";
         connection = DriverManager.getConnection(connectionURL);
     }
     public static Database getInstance() throws SQLException {

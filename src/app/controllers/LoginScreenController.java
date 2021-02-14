@@ -25,6 +25,7 @@ public class LoginScreenController {
         User user = new User(0,"","",fieldEmail.getText().toLowerCase(),fieldPassword.getText(), null);
         if(userDAO.provjeriLogin(user)){
             // TO-DO otvaranje nove forme
+            System.out.println("Login uspjesan?");
         }
         else{
             ErrorAlert errorAlert = new ErrorAlert("Login failed", "Login failed", "Wrong username or password, please try again");

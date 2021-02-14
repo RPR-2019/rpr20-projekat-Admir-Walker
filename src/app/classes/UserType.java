@@ -1,4 +1,5 @@
 package app.classes;
 
-public class UserType {
+public enum UserType {
+    GOST, STUDENT, PROFESOR;
 }
