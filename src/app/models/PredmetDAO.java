@@ -34,13 +34,11 @@ public class PredmetDAO {
     }
 
     public Predmet regenerisiPodatke(ResultSet resultSet) {
-
         try {
             int id = resultSet.getInt(1);
             String name = resultSet.getString(2);
             int profID = resultSet.getInt(3);
             User professor = UserDAO.getInstance().dajKorisnikaPrekoID(profID);
-            UserDAO.removeInstance();
             return new Predmet(id, name, professor);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -52,7 +50,7 @@ public class PredmetDAO {
         try {
             ResultSet resultSet = dajSvePredmete.executeQuery();
             List<Predmet> predmetList = new ArrayList<>();
-            while (!resultSet.isClosed() && resultSet.next()) {
+            while (resultSet.next()) {
                 Predmet predmet = regenerisiPodatke(resultSet);
                 if (predmet != null) {
                     predmetList.add(predmet);
