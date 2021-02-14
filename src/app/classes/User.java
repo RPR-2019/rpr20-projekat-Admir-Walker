@@ -21,6 +21,9 @@ public class User {
         this.userType.set(userType);
     }
 
+    public User() {
+    }
+
     public int getId() {
         return id.get();
     }
@@ -91,5 +94,17 @@ public class User {
 
     public void setUserType(UserType userType) {
         this.userType.set(userType);
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", firstName=" + firstName +
+                ", lastName=" + lastName +
+                ", email=" + email +
+                ", password=" + password +
+                ", userType=" + userType +
+                '}';
     }
 }

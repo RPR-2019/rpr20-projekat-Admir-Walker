@@ -14,12 +14,14 @@ public class Database {
         String connectionURL = "jdbc:mysql://localhost/filemanager?user=root&password=root&serverTimezone=GMT";
         connection = DriverManager.getConnection(connectionURL);
     }
+
     public static Database getInstance() throws SQLException {
-        if(instance == null) instance = new Database();
+        if (instance == null) instance = new Database();
         return instance;
     }
-    public static void removeInstance() throws SQLException{
-        if(instance == null) return;
+
+    public static void removeInstance() throws SQLException {
+        if (instance == null) return;
         connection.close();
         instance = null;
     }

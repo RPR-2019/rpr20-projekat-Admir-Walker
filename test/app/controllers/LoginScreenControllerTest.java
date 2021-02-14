@@ -44,8 +44,8 @@ class LoginScreenControllerTest {
         PasswordField password = robot.lookup("#fieldPassword").queryAs(PasswordField.class);
         Button loginButton = robot.lookup("#loginButton").queryAs(Button.class);
 
-        email.setText("admin");
-        password.setText("admin");
+        email.setText("gost");
+        password.setText("gost");
         robot.clickOn(loginButton);
 
 
