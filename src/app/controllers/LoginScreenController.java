@@ -3,7 +3,7 @@ package app.controllers;
 import app.classes.ErrorAlert;
 import app.classes.User;
 import app.models.MainScreenModel;
-import app.models.PredmetDAO;
+import app.models.SubjectDAO;
 import app.models.UserDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -30,15 +30,15 @@ public class LoginScreenController {
 
     public void login(ActionEvent actionEvent) throws IOException, SQLException {
         User user = new User(0, "", "", fieldEmail.getText().toLowerCase(), fieldPassword.getText(), null);
-        user = userDAO.provjeriLogin(user);
+        user = userDAO.checkLogin(user);
         if (user != null) {
 
-            MainScreenController mainScreenController = new MainScreenController(user, PredmetDAO.getInstance(), new MainScreenModel());
+            MainScreenController mainScreenController = new MainScreenController(user, SubjectDAO.getInstance(), new MainScreenModel());
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/mainScreen.fxml"));
             loader.setController(mainScreenController);
             Parent root = loader.load();
             Stage stage = new Stage();
-            stage.setTitle("Main");
+            stage.setTitle("Spisak predmeta");
             stage.setScene(new Scene(root, Region.USE_COMPUTED_SIZE, Region.USE_COMPUTED_SIZE));
             stage.show();
 

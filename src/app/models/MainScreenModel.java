@@ -1,34 +1,33 @@
 package app.models;
 
-import app.classes.Predmet;
-import javafx.beans.property.SimpleStringProperty;
+import app.classes.Subject;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.util.List;
 
 public class MainScreenModel {
-    private ObservableList<Predmet> listaPredmeta = FXCollections.observableArrayList();
+    private ObservableList<Subject> subjects = FXCollections.observableArrayList();
 
-    public void setListaPredmeta(List<Predmet> predmetList) {
-        listaPredmeta = FXCollections.observableArrayList(predmetList);
+    public void setSubjects(List<Subject> subjectList) {
+        subjects = FXCollections.observableArrayList(subjectList);
     }
 
-    public ObservableList<Predmet> getListaPredmeta() {
-        return listaPredmeta;
+    public ObservableList<Subject> getSubjects() {
+        return subjects;
     }
 
-    public void setListaPredmeta(ObservableList<Predmet> listaPredmeta) {
-        this.listaPredmeta = listaPredmeta;
+    public void setSubjectList(ObservableList<Subject> listaPredmeta) {
+        this.subjects = listaPredmeta;
     }
 
-    public ObservableList<Predmet> search(String searchParam){
-        ObservableList<Predmet> trazeniPredmeti = FXCollections.observableArrayList();
-        listaPredmeta.forEach(predmet -> {
-            if(predmet.isSubstring(searchParam)){
-                trazeniPredmeti.add(predmet);
+    public ObservableList<Subject> search(String searchParam){
+        ObservableList<Subject> filteredSubjects = FXCollections.observableArrayList();
+        subjects.forEach(subject -> {
+            if(subject.isSubstring(searchParam)){
+                filteredSubjects.add(subject);
             }
         });
-        return trazeniPredmeti;
+        return filteredSubjects;
     }
 }

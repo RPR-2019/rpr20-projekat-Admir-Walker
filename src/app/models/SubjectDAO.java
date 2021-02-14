@@ -15,11 +15,11 @@ public class SubjectDAO {
     private static SubjectDAO instance;
     private static Database database;
 
-    private PreparedStatement dajSvePredmete;
+    private PreparedStatement fetchAllSubjects;
 
     private SubjectDAO() throws SQLException {
         database = Database.getInstance();
-        dajSvePredmete = database.addPreparedStatement("select * from subject order by name asc");
+        fetchAllSubjects = database.addPreparedStatement("select * from subject order by name asc");
     }
 
     public static SubjectDAO getInstance() throws SQLException {
@@ -33,12 +33,12 @@ public class SubjectDAO {
         instance = null;
     }
 
-    public Subject regenerisiPodatke(ResultSet resultSet) {
+    public Subject regenerateData(ResultSet resultSet) {
         try {
             int id = resultSet.getInt(1);
             String name = resultSet.getString(2);
             int profID = resultSet.getInt(3);
-            User professor = UserDAO.getInstance().dajKorisnikaPrekoID(profID);
+            User professor = UserDAO.getInstance().fetchUserViaID(profID);
             return new Subject(id, name, professor);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -46,12 +46,12 @@ public class SubjectDAO {
         return null;
     }
 
-    public List<Subject> dajListuSvihPredmeta() {
+    public List<Subject> fetchSubjects() {
         try {
-            ResultSet resultSet = dajSvePredmete.executeQuery();
+            ResultSet resultSet = fetchAllSubjects.executeQuery();
             List<Subject> subjectList = new ArrayList<>();
             while (resultSet.next()) {
-                Subject subject = regenerisiPodatke(resultSet);
+                Subject subject = regenerateData(resultSet);
                 if (subject != null) {
                     subjectList.add(subject);
                 }

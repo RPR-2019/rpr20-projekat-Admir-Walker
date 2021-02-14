@@ -19,8 +19,6 @@ A
 src/app/Main.java,7\9\79d0a517ca40cf97f89e9d5fb676b98ca07fc2b4
 i
 9.idea/libraries/org_testfx_testfx_junit5_4_0_15_alpha.xml,a\8\a8f48de4ecfdd46bf246473730bfcac7810419aa
-a
-1.idea/libraries/org_xerial_sqlite_jdbc_3_21_0.xml,5\4\5425a9e8197bbc593a3ad60641080ce9498caabd
 I
 src/app/classes/User.java,8\9\898e0800f7f3efdcd7a6e292ea93672b2f72e622
 K
@@ -29,3 +27,17 @@ M
 src/app/classes/UserType.java,1\7\17262d9879ffa04ca73f780a517066c080e0a437
 c
 3test/app/controllers/LoginScreenControllerTest.java,d\2\d20e24631b3a45decb8bea242fa54da077ebde38
+a
+1src/app/exceptions/UserTypeNotFoundException.java,4\4\44a43caaf5c63a28a8fc3ee1887c2b936ab10560
+N
+src/app/models/PredmetDAO.java,6\0\60268866ec8b68f1753005bb6439d7f4dfdb2d1b
+f
+6out/production/RPRFinalniProjekat/fxml/mainScreen.fxml,7\c\7c6a46ff0bd8421fdea5cb680f1b53e4707ded2b
+S
+#src/app/models/MainScreenModel.java,a\9\a9e17a5cecdecb802e85737dcd5ea245b609dd93
+e
+5.idea/libraries/mysql_mysql_connector_java_8_0_23.xml,3\1\3157fbe0201443e8a6b3c205210417439a3162d9
+L
+src/app/classes/Predmet.java,5\9\5965096eb08eef876a02a64307dfddb38219a35c
+]
+-src/app/controllers/MainScreenController.java,2\4\243150746866215b3b1969c34d978a54f2e7c49a

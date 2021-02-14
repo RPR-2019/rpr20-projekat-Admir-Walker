@@ -14,13 +14,13 @@ public class UserDAO {
     private static UserDAO instance;
     private static Database database;
 
-    private PreparedStatement provjeriLoginIDajPodatke;
-    private PreparedStatement dajPodatkePrekoID;
+    private PreparedStatement checkLoginAndAssignData;
+    private PreparedStatement assignDataViaID;
 
     private UserDAO() throws SQLException {
         database = Database.getInstance();
-        provjeriLoginIDajPodatke = database.addPreparedStatement("select * from user where email=? and password=?");
-        dajPodatkePrekoID = database.addPreparedStatement("select * from user where userID = ?");
+        checkLoginAndAssignData = database.addPreparedStatement("select * from user where email=? and password=?");
+        assignDataViaID = database.addPreparedStatement("select * from user where userID = ?");
     }
 
     public static UserDAO getInstance() throws SQLException {
@@ -34,7 +34,7 @@ public class UserDAO {
         instance = null;
     }
 
-    public User regenerisiPodatke(ResultSet resultSet) {
+    public User regenerateData(ResultSet resultSet) {
         User user = new User();
 
         try {
@@ -49,13 +49,13 @@ public class UserDAO {
         return user;
     }
 
-    public User provjeriLogin(User user) {
+    public User checkLogin(User user) {
         try {
-            provjeriLoginIDajPodatke.setString(1, user.getEmail());
-            provjeriLoginIDajPodatke.setString(2, user.getPassword());
-            ResultSet resultSet = provjeriLoginIDajPodatke.executeQuery();
+            checkLoginAndAssignData.setString(1, user.getEmail());
+            checkLoginAndAssignData.setString(2, user.getPassword());
+            ResultSet resultSet = checkLoginAndAssignData.executeQuery();
             if (resultSet.next()) { // ako je nadjeno poklapanje maila i passworda, postavit cemo sve podatke
-                user = regenerisiPodatke(resultSet);
+                user = regenerateData(resultSet);
                 return user;
             }
         } catch (SQLException e) {
@@ -65,13 +65,13 @@ public class UserDAO {
         return null;
     }
 
-    public User dajKorisnikaPrekoID(int id) {
+    public User fetchUserViaID(int id) {
         try {
-            dajPodatkePrekoID.setInt(1, id);
-            ResultSet resultSet = dajPodatkePrekoID.executeQuery();
+            assignDataViaID.setInt(1, id);
+            ResultSet resultSet = assignDataViaID.executeQuery();
 
             if (resultSet.next()) {
-                return regenerisiPodatke(resultSet);
+                return regenerateData(resultSet);
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();

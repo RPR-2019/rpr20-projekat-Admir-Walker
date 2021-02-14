@@ -9,13 +9,13 @@ import java.util.Locale;
 public class Subject {
     private SimpleIntegerProperty id = new SimpleIntegerProperty(0);
     private SimpleStringProperty name = new SimpleStringProperty("");
-    private SimpleObjectProperty<User> profesor = new SimpleObjectProperty<>(null);
+    private SimpleObjectProperty<User> professor = new SimpleObjectProperty<>(null);
 
 
-    public Subject(int id, String name, User profesor) {
+    public Subject(int id, String name, User professor) {
         this.id.set(id);
         this.name.set(name);
-        this.profesor.set(profesor);
+        this.professor.set(professor);
     }
 
     public Subject() {
@@ -45,16 +45,16 @@ public class Subject {
         this.name.set(name);
     }
 
-    public User getProfesor() {
-        return profesor.get();
+    public User getProfessor() {
+        return professor.get();
     }
 
-    public SimpleObjectProperty<User> profesorProperty() {
-        return profesor;
+    public SimpleObjectProperty<User> professorProperty() {
+        return professor;
     }
 
-    public void setProfesor(User profesor) {
-        this.profesor.set(profesor);
+    public void setProfessor(User professor) {
+        this.professor.set(professor);
     }
 
     @Override
