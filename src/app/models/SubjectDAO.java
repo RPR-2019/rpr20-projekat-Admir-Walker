@@ -1,6 +1,6 @@
 package app.models;
 
-import app.classes.Predmet;
+import app.classes.Subject;
 import app.classes.User;
 import app.settings.Database;
 
@@ -10,20 +10,20 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PredmetDAO {
+public class SubjectDAO {
 
-    private static PredmetDAO instance;
+    private static SubjectDAO instance;
     private static Database database;
 
     private PreparedStatement dajSvePredmete;
 
-    private PredmetDAO() throws SQLException {
+    private SubjectDAO() throws SQLException {
         database = Database.getInstance();
-        dajSvePredmete = database.addPreparedStatement("select * from predmet");
+        dajSvePredmete = database.addPreparedStatement("select * from subject order by name asc");
     }
 
-    public static PredmetDAO getInstance() throws SQLException {
-        if (instance == null) instance = new PredmetDAO();
+    public static SubjectDAO getInstance() throws SQLException {
+        if (instance == null) instance = new SubjectDAO();
         return instance;
     }
 
@@ -33,30 +33,30 @@ public class PredmetDAO {
         instance = null;
     }
 
-    public Predmet regenerisiPodatke(ResultSet resultSet) {
+    public Subject regenerisiPodatke(ResultSet resultSet) {
         try {
             int id = resultSet.getInt(1);
             String name = resultSet.getString(2);
             int profID = resultSet.getInt(3);
             User professor = UserDAO.getInstance().dajKorisnikaPrekoID(profID);
-            return new Predmet(id, name, professor);
+            return new Subject(id, name, professor);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
         return null;
     }
 
-    public List<Predmet> dajListuSvihPredmeta() {
+    public List<Subject> dajListuSvihPredmeta() {
         try {
             ResultSet resultSet = dajSvePredmete.executeQuery();
-            List<Predmet> predmetList = new ArrayList<>();
+            List<Subject> subjectList = new ArrayList<>();
             while (resultSet.next()) {
-                Predmet predmet = regenerisiPodatke(resultSet);
-                if (predmet != null) {
-                    predmetList.add(predmet);
+                Subject subject = regenerisiPodatke(resultSet);
+                if (subject != null) {
+                    subjectList.add(subject);
                 }
             }
-            return predmetList;
+            return subjectList;
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }

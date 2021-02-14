@@ -6,19 +6,19 @@ import javafx.beans.property.SimpleStringProperty;
 
 import java.util.Locale;
 
-public class Predmet {
+public class Subject {
     private SimpleIntegerProperty id = new SimpleIntegerProperty(0);
     private SimpleStringProperty name = new SimpleStringProperty("");
     private SimpleObjectProperty<User> profesor = new SimpleObjectProperty<>(null);
 
 
-    public Predmet(int id, String name, User profesor) {
+    public Subject(int id, String name, User profesor) {
         this.id.set(id);
         this.name.set(name);
         this.profesor.set(profesor);
     }
 
-    public Predmet() {
+    public Subject() {
     }
 
     public int getId() {
