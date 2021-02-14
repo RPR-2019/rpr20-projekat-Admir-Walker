@@ -4,6 +4,8 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 
+import java.util.Locale;
+
 public class Predmet {
     private SimpleIntegerProperty id = new SimpleIntegerProperty(0);
     private SimpleStringProperty name = new SimpleStringProperty("");
@@ -58,5 +60,9 @@ public class Predmet {
     @Override
     public String toString() {
         return getName();
+    }
+
+    public boolean isSubstring(String searchParam){
+        return getName().toLowerCase(Locale.ROOT).contains(searchParam.toLowerCase(Locale.ROOT));
     }
 }
