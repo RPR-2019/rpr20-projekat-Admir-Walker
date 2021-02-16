@@ -48,9 +48,10 @@ public class DocumentDAO {
                 String documentUploadDate = resultSet.getString(4);
                 boolean documentIsDownloadable = resultSet.getInt(7) == 1;
                 int size = resultSet.getInt(8);
-                int userID = resultSet.getInt(9);
+                String type = resultSet.getString(9);
+                int userID = resultSet.getInt(10);
                 User author = UserDAO.getInstance().fetchUserViaID(userID);
-                documentList.add(new Document(documentID, documentName, documentPath, documentUploadDate, subject, author, documentIsDownloadable, size));
+                documentList.add(new Document(documentID, documentName, documentPath, documentUploadDate, subject, author, documentIsDownloadable, size, type));
             }
             return documentList;
         } catch (SQLException throwables) {

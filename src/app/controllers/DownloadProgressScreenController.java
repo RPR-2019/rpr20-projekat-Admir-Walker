@@ -31,7 +31,7 @@ public class DownloadProgressScreenController {
     }
 
     @FXML
-    public void initialize(){
+    public void initialize() {
         stopButton.setOnMouseClicked(mouseEvent -> {
             stop.stop();
             Node node = (Node) mouseEvent.getSource();
@@ -41,8 +41,29 @@ public class DownloadProgressScreenController {
         updateProgress();
     }
 
-    private void updateProgress() {
+    private synchronized void updateProgress()  {
 
+        new Thread(() -> {
+            Platform.runLater(() -> {
+                for(;;){
+                    double currentSize = 0;
+                    try {
+                        currentSize = Files.size(path);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    double progress = currentSize / maxSize;
+                    labelProgress.setText(""+Math.round(progress*100)+"%");
+                    progressBar.setProgress(progress);
+                    if(currentSize == maxSize) break;
+                    try {
+                        wait(100);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+        }).start();
     }
 
 

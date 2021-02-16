@@ -1,0 +1,39 @@
+
+Q
+java:S3740,"/Provide the parametrized type for this generic.(®–øœşÿÿÿÿ8ÑíÚ•ú.
+w
+java:S1104+"UMake colAuthor a static final constant or non-public and provide accessors if needed.(Øù­ãøÿÿÿÿ8³ÒÙ•ú.
+Z
+java:S1128"8Remove this unused import 'javafx.application.Platform'.(§“óùÿÿÿÿ8†®ë˜ú.
+u
+java:S1104("SMake colName a static final constant or non-public and provide accessors if needed.(ÊÚÎ¨ùÿÿÿÿ8³ÒÙ•ú.
+u
+java:S1104*"SMake colDate a static final constant or non-public and provide accessors if needed.(ïû©ğÿÿÿÿÿ8³ÒÙ•ú.
+t
+java:S1104)"WMake colLocation a static final constant or non-public and provide accessors if needed.(‡äß8³ÒÙ•ú.
+N
+java:S1128",Remove this unused import 'javax.print.Doc'.(ö«‘™ıÿÿÿÿ8×Ç’—ú.
+Q
+java:S3740("/Provide the parametrized type for this generic.(ÊÚÎ¨ùÿÿÿÿ8³ÒÙ•ú.
+Q
+java:S3740+"/Provide the parametrized type for this generic.(Øù­ãøÿÿÿÿ8³ÒÙ•ú.
+Z
+java:S1128"8Remove this unused import 'javafx.scene.control.Button'.(Ë Í‹øÿÿÿÿ8äáğ–ú.
+X
+java:S1128";Remove this unused import 'java.net.MalformedURLException'.(ªËŞˆ8¿°—ú.
+M
+java:S1128 "0Remove this unused import 'java.nio.file.Files'.(‚ƒü8Œ½¼˜ú.
+t
+java:S37764"RRefactor this method to reduce its Cognitive Complexity from 21 to the 15 allowed.(·òşÿÿÿÿ8²ş‚˜ú.
+H
+java:S1075D"&Remove this hard-coded path-delimiter.(ûÍ¨¯ûÿÿÿÿ8ÚÅ½™ú.
+Q
+java:S1128"/Remove this unused import 'app.models.UserDAO'.(°Ãıÿÿÿÿ8Şé˜ú.
+L
+java:S3740)"/Provide the parametrized type for this generic.(‡äß8³ÒÙ•ú.
+M
+java:S1128""0Remove this unused import 'java.nio.file.Paths'.(áè°¯8ˆ¶ƒ™ú.
+Q
+java:S3740*"/Provide the parametrized type for this generic.(ïû©ğÿÿÿÿÿ8³ÒÙ•ú.
+{
+java:S1104,"YMake materialTable a static final constant or non-public and provide accessors if needed.(®–øœşÿÿÿÿ8ÑíÚ•ú.

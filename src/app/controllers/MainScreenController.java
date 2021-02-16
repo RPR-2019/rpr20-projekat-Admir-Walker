@@ -42,7 +42,7 @@ public class MainScreenController {
             if(mouseEvent.getButton() == MouseButton.PRIMARY && mouseEvent.getClickCount() > 1)
             {
                 try {
-                    MaterialScreenController materialScreenController = new MaterialScreenController(spisakPredmeta.getSelectionModel().getSelectedItem(), DocumentDAO.getInstance());
+                    MaterialScreenController materialScreenController = new MaterialScreenController(currentUser,spisakPredmeta.getSelectionModel().getSelectedItem(), DocumentDAO.getInstance());
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/materialScreen.fxml"));
                     loader.setController(materialScreenController);
                     Parent root = loader.load();

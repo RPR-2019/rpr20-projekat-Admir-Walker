@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
@@ -12,6 +13,15 @@
             <TableColumn fx:id="colDate" minWidth="127.0" prefWidth="-1.0" text="Vrijeme postavljanja" />
             <TableColumn fx:id="colAuthor" minWidth="75.0" prefWidth="-1.0" text="Autor" />
         </columns>
+         <BorderPane.margin>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </BorderPane.margin>
       </TableView>
    </center>
+   <bottom>
+      <Button fx:id="btnAddMaterial" mnemonicParsing="false" text="Dodaj" BorderPane.alignment="CENTER" />
+   </bottom>
+   <padding>
+      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+   </padding>
 </BorderPane>

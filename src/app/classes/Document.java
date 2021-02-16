@@ -16,8 +16,9 @@ public class Document {
     private SimpleObjectProperty<User> author = new SimpleObjectProperty<>(null);
     private SimpleBooleanProperty downloadable = new SimpleBooleanProperty(false);
     private SimpleIntegerProperty size = new SimpleIntegerProperty(0);
+    private SimpleStringProperty type = new SimpleStringProperty("");
 
-    public Document(int id, String name, String path, String uploadDate, Subject subject, User author, boolean downloadable, int size) {
+    public Document(int id, String name, String path, String uploadDate, Subject subject, User author, boolean downloadable, int size, String type) {
         this.id.set(id);
         this.name.set(name);
         this.path.set(path);
@@ -26,6 +27,7 @@ public class Document {
         this.author.set(author);
         this.downloadable.set(downloadable);
         this.size.set(size);
+        this.type.set(type);
     }
 
     public int getId() {
@@ -122,5 +124,17 @@ public class Document {
 
     public void setSize(int size) {
         this.size.set(size);
+    }
+
+    public String getType() {
+        return type.get();
+    }
+
+    public SimpleStringProperty typeProperty() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type.set(type);
     }
 }
