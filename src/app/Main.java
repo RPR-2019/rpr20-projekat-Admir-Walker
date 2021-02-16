@@ -1,5 +1,6 @@
 package app;
 
+import app.classes.UploadTask;
 import app.controllers.LoginScreenController;
 import app.models.UserDAO;
 import app.settings.Database;
@@ -10,6 +11,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.sql.SQLException;
 
 public class Main extends Application {

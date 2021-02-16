@@ -42,7 +42,7 @@ public class DownloadProgressScreenController {
         updateProgress();
     }
 
-    private synchronized void updateProgress()  {
+    private synchronized void updateProgress() {
 
             Platform.runLater(() -> {
                 for(;;){

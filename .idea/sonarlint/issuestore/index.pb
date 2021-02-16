@@ -53,3 +53,11 @@ r
 Bout/production/RPRFinalniProjekat/fxml/downloadProgressScreen.fxml,f\3\f3e4366d263f476c5f5159ac2a2509883e8b332d
 i
 9src/app/controllers/DownloadProgressScreenController.java,b\a\ba472b74e803302a4d4b007386c74ea4f8e7f5b5
+g
+7out/production/RPRFinalniProjekat/fxml/addMaterial.fxml,4\6\469414a173e89b7fdb75164cc45fabe956580b8c
+T
+$src/app/classes/MultipartUpload.java,8\d\8ddc3f73f1d3f916540c5dadeef7fa14e3239932
+^
+.src/app/controllers/AddMaterialController.java,7\5\7528bb796a86a8a352ce81b5588f4dd91a75373e
+O
+src/app/classes/UploadTask.java,4\7\476019d7e81019a7b790ced97b9ac4dcd1b0312d

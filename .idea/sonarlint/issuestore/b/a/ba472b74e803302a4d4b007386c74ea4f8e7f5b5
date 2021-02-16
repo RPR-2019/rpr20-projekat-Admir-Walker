@@ -1,17 +1,11 @@
 
-{
-java:S1104"YMake labelProgress a static final constant or non-public and provide accessors if needed.(‘åñ€ÿÿÿÿÿ8Ù£â˜ú.
-Z
-java:S1128"8Remove this unused import 'javafx.application.Platform'.(§“óùÿÿÿÿ8ÁÏî™ú.
+S
+java:S1128"7Remove this unused import 'javafx.scene.control.Alert'.(ÊÇê:8á½âÂú.
 y
-java:S1104"WMake progressBar a static final constant or non-public and provide accessors if needed.(ûÇâàùÿÿÿÿ8Ù£â˜ú.
-M
-java:S1128"0Remove this unused import 'java.nio.file.Files'.(‚ƒü8ÁÏî™ú.
+java:S1104"WMake progressBar a static final constant or non-public and provide accessors if needed.(ûÇâàùÿÿÿÿ8­åÆÂú.
 u
-java:S1104"SMake maxSize a static final constant or non-public and provide accessors if needed.(éÁÆ¨øÿÿÿÿ8¾óÂ™ú.
-R
-java:S1128"0Remove this unused import 'java.io.IOException'.(ªº»Úıÿÿÿÿ8ÁÏî™ú.
+java:S1104"SMake maxSize a static final constant or non-public and provide accessors if needed.(éÁÆ¨øÿÿÿÿ8­åÆÂú.
+{
+java:S1104"YMake labelProgress a static final constant or non-public and provide accessors if needed.(‘åñ€ÿÿÿÿÿ8­åÆÂú.
 x
-java:S1104"VMake stopButton a static final constant or non-public and provide accessors if needed.(Íó¢ÿÿÿÿÿ8Ù£â˜ú.
-
-java:S1186,"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Ñ×¬¥8™øî™ú.
+java:S1104"VMake stopButton a static final constant or non-public and provide accessors if needed.(Íó¢ÿÿÿÿÿ8­åÆÂú.

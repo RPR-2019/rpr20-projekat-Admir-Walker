@@ -4,7 +4,6 @@ import app.classes.Document;
 import app.classes.Subject;
 import app.classes.User;
 import app.models.DocumentDAO;
-import app.models.UserDAO;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -49,11 +48,7 @@ public class MaterialScreenController {
 
     @FXML
     public void initialize() {
-        colName.setCellValueFactory(new PropertyValueFactory<Document, String>("name"));
-        colLocation.setCellValueFactory(new PropertyValueFactory<Document, String>("path"));
-        colDate.setCellValueFactory(new PropertyValueFactory<Document, String>("uploadDate"));
-        colAuthor.setCellValueFactory(new PropertyValueFactory<Document, User>("author"));
-        materialTable.setItems(FXCollections.observableArrayList(documentDAO.fetchDocumentList(selectedSubject)));
+        tableInit();
         materialTable.setOnMouseClicked(mouseEvent -> {
             if (mouseEvent.getButton() == MouseButton.PRIMARY && mouseEvent.getClickCount() > 1) {
                 Document document = (Document) materialTable.getSelectionModel().getSelectedItem();
@@ -62,7 +57,6 @@ public class MaterialScreenController {
                     DirectoryChooser directoryChooser = new DirectoryChooser();
                     directoryChooser.setTitle("Izaberite download folder");
                     File selectedDirectory = directoryChooser.showDialog(new Stage());
-
                     if (selectedDirectory != null) {
                         Path path = Path.of(selectedDirectory.getAbsolutePath() + "\\" + document.getName() + "."+document.getType());
 
@@ -124,8 +118,12 @@ public class MaterialScreenController {
                 AddMaterialController addMaterialController = new AddMaterialController(author.getId(), selectedSubject.getId());
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/addMaterial.fxml"));
                 loader.setController(addMaterialController);
+
                 Parent root = loader.load();
                 Stage stage = new Stage();
+                stage.setOnHiding(windowEvent -> {
+                    tableInit();
+                });
                 stage.setTitle("Dodaj novi materijal");
                 stage.setScene(new Scene(root, Region.USE_COMPUTED_SIZE, Region.USE_COMPUTED_SIZE));
                 stage.show();
@@ -134,5 +132,12 @@ public class MaterialScreenController {
             }
 
         });
+    }
+    void tableInit(){
+        colName.setCellValueFactory(new PropertyValueFactory<Document, String>("name"));
+        colLocation.setCellValueFactory(new PropertyValueFactory<Document, String>("path"));
+        colDate.setCellValueFactory(new PropertyValueFactory<Document, String>("uploadDate"));
+        colAuthor.setCellValueFactory(new PropertyValueFactory<Document, User>("author"));
+        materialTable.setItems(FXCollections.observableArrayList(documentDAO.fetchDocumentList(selectedSubject)));
     }
 }
