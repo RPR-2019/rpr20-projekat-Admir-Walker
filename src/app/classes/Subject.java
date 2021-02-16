@@ -62,7 +62,7 @@ public class Subject {
         return getName();
     }
 
-    public boolean isSubstring(String searchParam){
+    public boolean isSubstring(String searchParam) {
         return getName().toLowerCase(Locale.ROOT).contains(searchParam.toLowerCase(Locale.ROOT));
     }
 }

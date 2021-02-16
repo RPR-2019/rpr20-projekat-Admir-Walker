@@ -21,10 +21,10 @@ public class MainScreenModel {
         this.subjects = listaPredmeta;
     }
 
-    public ObservableList<Subject> search(String searchParam){
+    public ObservableList<Subject> search(String searchParam) {
         ObservableList<Subject> filteredSubjects = FXCollections.observableArrayList();
         subjects.forEach(subject -> {
-            if(subject.isSubstring(searchParam)){
+            if (subject.isSubstring(searchParam)) {
                 filteredSubjects.add(subject);
             }
         });

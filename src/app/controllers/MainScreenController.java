@@ -39,10 +39,9 @@ public class MainScreenController {
         mainScreenModel.setSubjects(subjectDAO.fetchSubjects());
         spisakPredmeta.setItems(mainScreenModel.getSubjects());
         spisakPredmeta.setOnMouseClicked(mouseEvent -> {
-            if(mouseEvent.getButton() == MouseButton.PRIMARY && mouseEvent.getClickCount() > 1)
-            {
+            if (mouseEvent.getButton() == MouseButton.PRIMARY && mouseEvent.getClickCount() > 1) {
                 try {
-                    MaterialScreenController materialScreenController = new MaterialScreenController(currentUser,spisakPredmeta.getSelectionModel().getSelectedItem(), DocumentDAO.getInstance());
+                    MaterialScreenController materialScreenController = new MaterialScreenController(currentUser, spisakPredmeta.getSelectionModel().getSelectedItem(), DocumentDAO.getInstance());
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/materialScreen.fxml"));
                     loader.setController(materialScreenController);
                     Parent root = loader.load();
@@ -58,7 +57,7 @@ public class MainScreenController {
             }
         });
         searchField.textProperty().addListener((observableValue, s, t1) -> {
-            if(t1 != null){
+            if (t1 != null) {
                 spisakPredmeta.setItems(mainScreenModel.search(t1));
             }
         });

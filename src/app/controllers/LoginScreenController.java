@@ -32,7 +32,6 @@ public class LoginScreenController {
         User user = new User(0, "", "", fieldEmail.getText().toLowerCase(), fieldPassword.getText(), null);
         user = userDAO.checkLogin(user);
         if (user != null) {
-
             MainScreenController mainScreenController = new MainScreenController(user, SubjectDAO.getInstance(), new MainScreenModel());
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/mainScreen.fxml"));
             loader.setController(mainScreenController);
@@ -46,15 +45,13 @@ public class LoginScreenController {
             Stage currentStage = (Stage) node.getScene().getWindow();
             currentStage.close();
         } else {
-            ErrorAlert errorAlert = new ErrorAlert("Login failed", "Login failed", "Wrong username or password, please try again");
+            ErrorAlert errorAlert = new ErrorAlert("Login neuspješan", "Login neuspješan", "Pogrešno korisničko ime ili password. Pokušajte ponovo");
             errorAlert.showAndWait();
         }
     }
 
     public void exit(ActionEvent actionEvent) throws SQLException {
-        Node node = (Node) actionEvent.getSource();
-        Stage stage = (Stage) node.getScene().getWindow();
         UserDAO.removeInstance();
-        stage.close();
+        ((Stage) ((Node) actionEvent.getSource()).getScene().getWindow()).close();
     }
 }

@@ -51,93 +51,102 @@ public class MaterialScreenController {
         tableInit();
         materialTable.setOnMouseClicked(mouseEvent -> {
             if (mouseEvent.getButton() == MouseButton.PRIMARY && mouseEvent.getClickCount() > 1) {
-                Document document = (Document) materialTable.getSelectionModel().getSelectedItem();
-                if (document.isDownloadable()) {
-
-                    DirectoryChooser directoryChooser = new DirectoryChooser();
-                    directoryChooser.setTitle("Izaberite download folder");
-                    File selectedDirectory = directoryChooser.showDialog(new Stage());
-                    if (selectedDirectory != null) {
-                        Path path = Path.of(selectedDirectory.getAbsolutePath() + "\\" + document.getName() + "."+document.getType());
-
-                        Thread downloadThread = new Thread(() -> {
-                            ReadableByteChannel readChannel = null;
-                            FileOutputStream fileOS = null;
-                            FileChannel writeChannel = null;
-                            try {
-                                readChannel = Channels.newChannel(new URL(document.getPath()).openStream());
-                                fileOS = new FileOutputStream(path.toString());
-                                writeChannel = fileOS.getChannel();
-                                writeChannel.transferFrom(readChannel, 0, Long.MAX_VALUE);
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }finally {
-                                try {
-                                    if (readChannel != null) {
-                                        readChannel.close();
-                                    }
-                                    if (fileOS != null) {
-                                        fileOS.close();
-                                    }
-                                    if (writeChannel != null) {
-                                        writeChannel.close();
-                                    }
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                }
-
-                            }
-                        });
-
-                        downloadThread.start();
-
-                        DownloadProgressScreenController downloadProgressScreenController = new DownloadProgressScreenController(downloadThread::interrupt, path, document.getSize());
-
-                        try {
-                            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/downloadProgressScreen.fxml"));
-                            loader.setController(downloadProgressScreenController);
-                            Parent root = loader.load();
-                            Stage stage = new Stage();
-                            stage.setTitle("Preuzimanje");
-                            stage.setScene(new Scene(root, Region.USE_COMPUTED_SIZE, Region.USE_COMPUTED_SIZE));
-                            stage.setResizable(false);
-                            stage.show();
-                            stage.toFront();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-
-
-                    }
-                }
+                documentPicker();
             }
         });
-
-        btnAddMaterial.setOnMouseClicked(mouseEvent -> {
-            try {
-                AddMaterialController addMaterialController = new AddMaterialController(author.getId(), selectedSubject.getId());
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/addMaterial.fxml"));
-                loader.setController(addMaterialController);
-
-                Parent root = loader.load();
-                Stage stage = new Stage();
-                stage.setOnHiding(windowEvent -> {
-                    tableInit();
-                });
-                stage.setTitle("Dodaj novi materijal");
-                stage.setScene(new Scene(root, Region.USE_COMPUTED_SIZE, Region.USE_COMPUTED_SIZE));
-                stage.show();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-        });
+        btnAddMaterial.setOnMouseClicked(mouseEvent -> addMaterial());
     }
-    void tableInit(){
+
+    private void tableInit() {
         colName.setCellValueFactory(new PropertyValueFactory<Document, String>("name"));
         colLocation.setCellValueFactory(new PropertyValueFactory<Document, String>("path"));
         colDate.setCellValueFactory(new PropertyValueFactory<Document, String>("uploadDate"));
         colAuthor.setCellValueFactory(new PropertyValueFactory<Document, User>("author"));
         materialTable.setItems(FXCollections.observableArrayList(documentDAO.fetchDocumentList(selectedSubject)));
+    }
+
+    private void addMaterial() {
+        try {
+            AddMaterialController addMaterialController = new AddMaterialController(author.getId(), selectedSubject.getId());
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/addMaterial.fxml"));
+            loader.setController(addMaterialController);
+
+            Parent root = loader.load();
+            Stage stage = new Stage();
+            stage.setOnHiding(windowEvent -> tableInit());
+            stage.setTitle("Dodaj novi materijal");
+            stage.setScene(new Scene(root, Region.USE_COMPUTED_SIZE, Region.USE_COMPUTED_SIZE));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void documentPicker() {
+        Document document = (Document) materialTable.getSelectionModel().getSelectedItem();
+        if (document.isDownloadable()) {
+
+            DirectoryChooser directoryChooser = new DirectoryChooser();
+            directoryChooser.setTitle("Izaberite download folder");
+            File selectedDirectory = directoryChooser.showDialog(new Stage());
+
+            if (selectedDirectory != null) {
+                Path path = Path.of(selectedDirectory.getAbsolutePath() + File.separator + document.getName() + "." + document.getType());
+                Thread downloadThread = new Thread(() -> {
+                    downloadFile(document, path);
+                });
+                downloadThread.start();
+                openDownloadProgressScreen(downloadThread, path, document.getSize());
+            }
+        }
+    }
+
+    private void downloadFile(Document document, Path path) {
+        ReadableByteChannel readChannel = null;
+        FileOutputStream fileOS = null;
+        FileChannel writeChannel = null;
+        try {
+            readChannel = Channels.newChannel(new URL(document.getPath()).openStream());
+            fileOS = new FileOutputStream(path.toString());
+            writeChannel = fileOS.getChannel();
+            writeChannel.transferFrom(readChannel, 0, Long.MAX_VALUE);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            closeUsedResources(readChannel, fileOS, writeChannel);
+        }
+    }
+
+    private void closeUsedResources(ReadableByteChannel readableByteChannel, FileOutputStream fileOutputStream, FileChannel fileChannel) {
+        try {
+            if (readableByteChannel != null) {
+                readableByteChannel.close();
+            }
+            if (fileOutputStream != null) {
+                fileOutputStream.close();
+            }
+            if (fileChannel != null) {
+                fileChannel.close();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void openDownloadProgressScreen(Thread downloadThread, Path path, int maxSize) {
+        try {
+            DownloadProgressScreenController downloadProgressScreenController = new DownloadProgressScreenController(downloadThread::interrupt, path, maxSize);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/downloadProgressScreen.fxml"));
+            loader.setController(downloadProgressScreenController);
+            Parent root = loader.load();
+            Stage stage = new Stage();
+            stage.setTitle("Preuzimanje");
+            stage.setScene(new Scene(root, Region.USE_COMPUTED_SIZE, Region.USE_COMPUTED_SIZE));
+            stage.setResizable(false);
+            stage.show();
+            stage.toFront();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

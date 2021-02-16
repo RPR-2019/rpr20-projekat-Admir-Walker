@@ -5,10 +5,11 @@ import java.io.FileInputStream;
 import java.io.IOException;
 
 public class UploadTask {
+
     private String uploadURL;
     private File uploadFile;
 
-    public interface Finish{
+    public interface Finish {
         void finish();
     }
 
@@ -17,10 +18,9 @@ public class UploadTask {
         this.uploadFile = uploadFile;
     }
 
-    public void upload(Finish finish){
-        // TO-DO graficki interfejs za upload fileova :)
+    public void upload(Finish finish) {
         new Thread(() -> {
-            try{
+            try {
                 MultipartUpload util = new MultipartUpload(uploadURL,
                         "UTF-8");
                 util.addFile("file", uploadFile);

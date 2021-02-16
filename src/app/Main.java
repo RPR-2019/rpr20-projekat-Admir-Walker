@@ -1,6 +1,5 @@
 package app;
 
-import app.classes.UploadTask;
 import app.controllers.LoginScreenController;
 import app.models.UserDAO;
 import app.settings.Database;
@@ -11,13 +10,12 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 
-import java.io.File;
 import java.sql.SQLException;
 
 public class Main extends Application {
 
     @Override
-    public void start(Stage primaryStage) throws Exception{
+    public void start(Stage primaryStage) throws Exception {
         UserDAO userDAO = UserDAO.getInstance();
         LoginScreenController loginScreenController = new LoginScreenController(userDAO);
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/loginScreen.fxml"));

@@ -9,6 +9,4 @@ public class ErrorAlert extends Alert {
         setHeaderText(heading);
         setContentText(content);
     }
-
-
 }

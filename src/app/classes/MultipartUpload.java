@@ -22,7 +22,8 @@ public class MultipartUpload {
         outputStream = httpURLConnection.getOutputStream();
         printWriter = new PrintWriter(new OutputStreamWriter(outputStream, charset), true);
     }
-    public void addFile(String fieldName, File uploadFile) throws IOException{
+
+    public void addFile(String fieldName, File uploadFile) throws IOException {
         String fileName = uploadFile.getName();
         printWriter.append("--" + boundary).append(LINE_FEED);
         printWriter.append(
@@ -37,10 +38,12 @@ public class MultipartUpload {
         printWriter.append(LINE_FEED);
         printWriter.flush();
     }
+
     public void writeFileBytes(byte[] bytes, int offset, int length)
             throws IOException {
         outputStream.write(bytes, offset, length);
     }
+
     public void finish() throws IOException {
         outputStream.flush();
         printWriter.append(LINE_FEED);

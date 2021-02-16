@@ -21,8 +21,8 @@ public class DocumentDAO {
         database = Database.getInstance();
         fetchDocuments = database.addPreparedStatement(
                 "select * from document d\n" +
-                "inner join user u on d.author = u.userID\n" +
-                "where subject = ?;"
+                        "inner join user u on d.author = u.userID\n" +
+                        "where subject = ?;"
         );
     }
 
@@ -36,12 +36,13 @@ public class DocumentDAO {
         Database.removeInstance();
         instance = null;
     }
-    public List<Document> fetchDocumentList(Subject subject){
+
+    public List<Document> fetchDocumentList(Subject subject) {
         try {
             fetchDocuments.setInt(1, subject.getId());
             ResultSet resultSet = fetchDocuments.executeQuery();
             List<Document> documentList = new ArrayList<>();
-            while (resultSet.next()){
+            while (resultSet.next()) {
                 int documentID = resultSet.getInt(1);
                 String documentName = resultSet.getString(2);
                 String documentPath = resultSet.getString(3);
