@@ -3,6 +3,7 @@ package app.controllers;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
@@ -43,7 +44,6 @@ public class DownloadProgressScreenController {
 
     private synchronized void updateProgress()  {
 
-        new Thread(() -> {
             Platform.runLater(() -> {
                 for(;;){
                     double currentSize = 0;
@@ -55,15 +55,12 @@ public class DownloadProgressScreenController {
                     double progress = currentSize / maxSize;
                     labelProgress.setText(""+Math.round(progress*100)+"%");
                     progressBar.setProgress(progress);
-                    if(currentSize == maxSize) break;
-                    try {
-                        wait(100);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
+                    if(currentSize == maxSize){
+                        progressBar.getScene().getWindow().hide();
+                        break;
                     }
                 }
             });
-        }).start();
     }
 
 
