@@ -18,7 +18,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.sql.SQLException;
 
-public class MainScreenController {
+public class MainController {
 
     private final User currentUser;
     private final SubjectDAO subjectDAO;
@@ -28,7 +28,7 @@ public class MainScreenController {
     public ListView<Subject> spisakPredmeta;
 
 
-    public MainScreenController(User user, SubjectDAO subjectDAO, MainScreenModel mainScreenModel) {
+    public MainController(User user, SubjectDAO subjectDAO, MainScreenModel mainScreenModel) {
         this.currentUser = user;
         this.subjectDAO = subjectDAO;
         this.mainScreenModel = mainScreenModel;
@@ -40,20 +40,9 @@ public class MainScreenController {
         spisakPredmeta.setItems(mainScreenModel.getSubjects());
         spisakPredmeta.setOnMouseClicked(mouseEvent -> {
             if (mouseEvent.getButton() == MouseButton.PRIMARY && mouseEvent.getClickCount() > 1) {
-                try {
-                    MaterialScreenController materialScreenController = new MaterialScreenController(currentUser, spisakPredmeta.getSelectionModel().getSelectedItem(), DocumentDAO.getInstance());
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/materialScreen.fxml"));
-                    loader.setController(materialScreenController);
-                    Parent root = loader.load();
-                    Stage stage = new Stage();
-                    stage.setTitle("Spisak dokumenata");
-                    stage.setScene(new Scene(root, Region.USE_COMPUTED_SIZE, Region.USE_COMPUTED_SIZE));
-                    stage.show();
-                    stage.toFront();
-                } catch (IOException | SQLException e) {
-                    e.printStackTrace();
+                if(spisakPredmeta.getSelectionModel().getSelectedItem()!=null){
+                    openMaterial();
                 }
-
             }
         });
         searchField.textProperty().addListener((observableValue, s, t1) -> {
@@ -61,5 +50,20 @@ public class MainScreenController {
                 spisakPredmeta.setItems(mainScreenModel.search(t1));
             }
         });
+    }
+    private void openMaterial(){
+        try {
+            MaterialController materialController = new MaterialController(currentUser, spisakPredmeta.getSelectionModel().getSelectedItem(), DocumentDAO.getInstance());
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/material.fxml"));
+            loader.setController(materialController);
+            Parent root = loader.load();
+            Stage stage = new Stage();
+            stage.setTitle("Spisak dokumenata");
+            stage.setScene(new Scene(root, Region.USE_COMPUTED_SIZE, Region.USE_COMPUTED_SIZE));
+            stage.show();
+            stage.toFront();
+        } catch (IOException | SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

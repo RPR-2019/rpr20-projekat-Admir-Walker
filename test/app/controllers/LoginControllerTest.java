@@ -23,13 +23,13 @@ import java.sql.SQLException;
 import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(ApplicationExtension.class)
-class LoginScreenControllerTest {
+class LoginControllerTest {
     @Start
     public void start(Stage stage) throws SQLException, IOException {
         UserDAO userDAO = UserDAO.getInstance();
-        LoginScreenController loginScreenController = new LoginScreenController(userDAO);
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/loginScreen.fxml"));
-        loader.setController(loginScreenController);
+        LoginController loginController = new LoginController(userDAO);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/login.fxml"));
+        loader.setController(loginController);
         Parent root = loader.load();
         stage.setTitle("Login");
         stage.setScene(new Scene(root, Region.USE_COMPUTED_SIZE, Region.USE_COMPUTED_SIZE));
@@ -65,6 +65,6 @@ class LoginScreenControllerTest {
         robot.clickOn(loginButton);
 
         DialogPane dialogPane = robot.lookup(".dialog-pane").queryAs(DialogPane.class);
-        assertEquals("Login failed", dialogPane.getHeaderText());
+        assertEquals("Login neuspješan", dialogPane.getHeaderText());
     }
 }

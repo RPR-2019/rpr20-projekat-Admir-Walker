@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
-public class DownloadProgressScreenController {
+public class DownloadProgressController {
     public interface Stop {
         void stop();
     }
@@ -24,7 +24,7 @@ public class DownloadProgressScreenController {
     public final Path path;
     public int maxSize;
 
-    public DownloadProgressScreenController(Stop stop, Path path, int maxSize) {
+    public DownloadProgressController(Stop stop, Path path, int maxSize) {
         this.stop = stop;
         this.path = path;
         this.maxSize = maxSize;

@@ -1,10 +1,5 @@
 
-J
-java:S1481$"-Remove this unused "database" local variable.(¨‘ì8¥ÔïÃú.
-c
-java:S1075&"ARefactor your code to get this URI from a customizable parameter.(¥¹ÄÀşÿÿÿÿ8Ò»øÃú.
-Y
-java:S1854$"<Remove this useless assignment to local variable "database".(¨‘ì8¥ÔïÃú.
-E	java:S108,")Either remove or fill this block of code.(”ı¾8¨–úÃú.
 W
-java:S1141'"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8¨–úÃú.
+java:S1854"<Remove this useless assignment to local variable "database".(¨‘ì8áÛüçú.
+H
+java:S1481"-Remove this unused "database" local variable.(¨‘ì8áÛüçú.

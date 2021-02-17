@@ -18,13 +18,13 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.sql.SQLException;
 
-public class LoginScreenController {
+public class LoginController {
 
     public TextField fieldEmail;
     public PasswordField fieldPassword;
     private UserDAO userDAO;
 
-    public LoginScreenController(UserDAO userDAO) {
+    public LoginController(UserDAO userDAO) {
         this.userDAO = userDAO;
     }
 
@@ -32,9 +32,9 @@ public class LoginScreenController {
         User user = new User(0, "", "", fieldEmail.getText().toLowerCase(), fieldPassword.getText(), null);
         user = userDAO.checkLogin(user);
         if (user != null) {
-            MainScreenController mainScreenController = new MainScreenController(user, SubjectDAO.getInstance(), new MainScreenModel());
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/mainScreen.fxml"));
-            loader.setController(mainScreenController);
+            MainController mainController = new MainController(user, SubjectDAO.getInstance(), new MainScreenModel());
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/main.fxml"));
+            loader.setController(mainController);
             Parent root = loader.load();
             Stage stage = new Stage();
             stage.setTitle("Spisak predmeta");

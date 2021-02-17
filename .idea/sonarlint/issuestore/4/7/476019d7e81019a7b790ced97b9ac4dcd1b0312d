@@ -1,6 +1,4 @@
 
-\
-java:S1128":Remove this unused import 'java.io.FileNotFoundException'.(·î™ùÿÿÿÿ8çÇæÃú.
-W
-java:S1481%"5Remove this unused "percentCompleted" local variable.(‹—Ìÿÿÿÿÿ8·³æÃú.
-]	java:S125,"<This block of commented-out lines of code should be removed.(£‘§øÿÿÿÿ8·³æÃú.
+U
+java:S1481"5Remove this unused "percentCompleted" local variable.(‹—Ìÿÿÿÿÿ8¬ °èú.
+[	java:S125"<This block of commented-out lines of code should be removed.(£‘§øÿÿÿÿ8¬ °èú.

@@ -1,0 +1,9 @@
+
+{
+java:S1104"YMake labelProgress a static final constant or non-public and provide accessors if needed.(‘åñ€ÿÿÿÿÿ8ƒ–èú.
+x
+java:S1104"VMake stopButton a static final constant or non-public and provide accessors if needed.(Íó¢ÿÿÿÿÿ8ƒ–èú.
+y
+java:S1104"WMake progressBar a static final constant or non-public and provide accessors if needed.(ûÇâàùÿÿÿÿ8ƒ–èú.
+u
+java:S1104"SMake maxSize a static final constant or non-public and provide accessors if needed.(éÁÆ¨øÿÿÿÿ8ƒ–èú.

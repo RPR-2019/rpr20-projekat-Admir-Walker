@@ -1,0 +1,29 @@
+
+u
+java:S1104&"SMake colDate a static final constant or non-public and provide accessors if needed.(ïû©ğÿÿÿÿÿ8ö´òˆû.
+w
+java:S1104'"UMake colAuthor a static final constant or non-public and provide accessors if needed.(Øù­ãøÿÿÿÿ8ö´òˆû.
+Q
+java:S3740$"/Provide the parametrized type for this generic.(ÊÚÎ¨ùÿÿÿÿ8ö´òˆû.
+{
+java:S1104("YMake materialTable a static final constant or non-public and provide accessors if needed.(¬®ŞĞüÿÿÿÿ8ö´òˆû.
+N
+java:S1602a",Remove useless curly braces around statement(ñõÖóúÿÿÿÿ8ö´òˆû.
+L
+java:S2093n"*Change this "try" to a try-with-resources.(¡»¢üùÿÿÿÿ8ö´òˆû.
+t
+java:S1104%"WMake colLocation a static final constant or non-public and provide accessors if needed.(‡äß8ö´òˆû.
+N
+java:S1128",Remove this unused import 'javax.print.Doc'.(ö«‘™ıÿÿÿÿ8ö´òˆû.
+u
+java:S1104$"SMake colName a static final constant or non-public and provide accessors if needed.(ÊÚÎ¨ùÿÿÿÿ8ö´òˆû.
+Q
+java:S3740&"/Provide the parametrized type for this generic.(ïû©ğÿÿÿÿÿ8ö´òˆû.
+|
+java:S1104*"ZMake btnAddMaterial a static final constant or non-public and provide accessors if needed.(ÂåÖœşÿÿÿÿ8ö´òˆû.
+L
+java:S3740%"/Provide the parametrized type for this generic.(‡äß8ö´òˆû.
+M
+java:S1905X"+Remove this unnecessary cast to "Document".(úÃ¹´üÿÿÿÿ8ö´òˆû.
+Q
+java:S3740'"/Provide the parametrized type for this generic.(Øù­ãøÿÿÿÿ8ö´òˆû.
