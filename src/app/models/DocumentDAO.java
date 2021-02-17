@@ -16,13 +16,26 @@ public class DocumentDAO {
     private static Database database;
 
     private PreparedStatement fetchDocuments;
+    private PreparedStatement updateDocument;
+    private PreparedStatement deleteDocument;
 
     private DocumentDAO() throws SQLException {
         database = Database.getInstance();
         fetchDocuments = database.addPreparedStatement(
                 "select * from document d\n" +
-                        "inner join user u on d.author = u.userID\n" +
-                        "where subject = ?;"
+                "inner join user u on d.author = u.userID\n" +
+                "where subject = ?;"
+        );
+        updateDocument = database.addPreparedStatement(
+                "update document \n" +
+                "set\n" +
+                "name = ?,\n" +
+                "subject = ?\n" +
+                "where documentID = ?;"
+        );
+        deleteDocument = database.addPreparedStatement(
+                "delete from document\n" +
+                "where documentID = ?;"
         );
     }
 
@@ -59,6 +72,27 @@ public class DocumentDAO {
             throwables.printStackTrace();
         }
         return null;
+    }
+
+    public Document update(Document document) {
+        try {
+            updateDocument.setString(1, document.getName());
+            updateDocument.setInt(2, document.getSubjectID());
+            updateDocument.setInt(3, document.getId());
+            updateDocument.execute();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return null;
+    }
+
+    public void delete(Document document) {
+        try {
+            deleteDocument.setInt(1, document.getId());
+            deleteDocument.execute();
+        } catch (SQLException exception) {
+            exception.printStackTrace();
+        }
     }
 }
 

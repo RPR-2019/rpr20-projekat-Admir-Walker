@@ -137,4 +137,15 @@ public class Document {
     public void setType(String type) {
         this.type.set(type);
     }
+
+    public String getAuthorFullName(){
+        return getAuthor().toString();
+    }
+    public int getAuthorID(){
+        return getAuthor().getId();
+    }
+
+    public int getSubjectID() {
+        return getSubject().getId();
+    }
 }

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <TableView fx:id="materialTable" BorderPane.alignment="CENTER">
+        <columns>
+          <TableColumn fx:id="colName" minWidth="75.0" prefWidth="-1.0" text="Naziv" />
+          <TableColumn fx:id="colLocation" minWidth="75.0" prefWidth="-1.0" text="Lokacija" />
+            <TableColumn fx:id="colDate" minWidth="127.0" prefWidth="-1.0" text="Vrijeme postavljanja" />
+            <TableColumn fx:id="colAuthor" minWidth="75.0" prefWidth="-1.0" text="Autor" />
+        </columns>
+         <BorderPane.margin>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </BorderPane.margin>
+      </TableView>
+   </center>
+   <bottom>
+      <Button fx:id="btnAddMaterial" mnemonicParsing="false" text="Dodaj" BorderPane.alignment="CENTER" />
+   </bottom>
+   <padding>
+      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+   </padding>
+</BorderPane>

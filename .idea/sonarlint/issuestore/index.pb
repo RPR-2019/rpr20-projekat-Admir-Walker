@@ -11,10 +11,6 @@ S
 #.idea/sonarlint/issuestore/index.pb,9\f\9fe84ebb15faf917b7def6236dba604453cc61e0
 J
 .idea/libraries/javafx.xml,f\0\f01fa3cc38467805c9ad58fa176b2fe7146a6a5c
-g
-7out/production/RPRFinalniProjekat/fxml/loginScreen.fxml,2\1\21ece5a14e721834f639445eb49c1bd7497fa253
-^
-.src/app/controllers/LoginScreenController.java,1\2\12b71be86bf674c79bd90fbfca919dd884cfc1f9
 A
 src/app/Main.java,7\9\79d0a517ca40cf97f89e9d5fb676b98ca07fc2b4
 i
@@ -25,18 +21,12 @@ K
 src/app/models/UserDAO.java,5\3\53a527a4389384100bc7e7d186f3677b57fd94b5
 M
 src/app/classes/UserType.java,1\7\17262d9879ffa04ca73f780a517066c080e0a437
-c
-3test/app/controllers/LoginScreenControllerTest.java,d\2\d20e24631b3a45decb8bea242fa54da077ebde38
 a
 1src/app/exceptions/UserTypeNotFoundException.java,4\4\44a43caaf5c63a28a8fc3ee1887c2b936ab10560
-f
-6out/production/RPRFinalniProjekat/fxml/mainScreen.fxml,7\c\7c6a46ff0bd8421fdea5cb680f1b53e4707ded2b
 S
 #src/app/models/MainScreenModel.java,a\9\a9e17a5cecdecb802e85737dcd5ea245b609dd93
 e
 5.idea/libraries/mysql_mysql_connector_java_8_0_23.xml,3\1\3157fbe0201443e8a6b3c205210417439a3162d9
-]
--src/app/controllers/MainScreenController.java,2\4\243150746866215b3b1969c34d978a54f2e7c49a
 N
 src/app/models/SubjectDAO.java,b\7\b76e07d5d4140ee70aec1736660ee8dc08da7ac1
 L
@@ -45,14 +35,6 @@ M
 src/app/classes/Document.java,e\f\ef8b486a7ad4656925ed95144ce3f14f7d0316ac
 O
 src/app/models/DocumentDAO.java,e\6\e68441480b4851f159ae7a0735dd84fe14ef065d
-j
-:out/production/RPRFinalniProjekat/fxml/materialScreen.fxml,b\0\b01e04d7d0c3b973c20642d9be5d42b6279d1aa7
-a
-1src/app/controllers/MaterialScreenController.java,6\6\6695b268c81d2d8ee3b048b8eb856af5c56b4aa7
-r
-Bout/production/RPRFinalniProjekat/fxml/downloadProgressScreen.fxml,f\3\f3e4366d263f476c5f5159ac2a2509883e8b332d
-i
-9src/app/controllers/DownloadProgressScreenController.java,b\a\ba472b74e803302a4d4b007386c74ea4f8e7f5b5
 g
 7out/production/RPRFinalniProjekat/fxml/addMaterial.fxml,4\6\469414a173e89b7fdb75164cc45fabe956580b8c
 T
@@ -61,3 +43,15 @@ $src/app/classes/MultipartUpload.java,8\d\8ddc3f73f1d3f916540c5dadeef7fa14e3239
 .src/app/controllers/AddMaterialController.java,7\5\7528bb796a86a8a352ce81b5588f4dd91a75373e
 O
 src/app/classes/UploadTask.java,4\7\476019d7e81019a7b790ced97b9ac4dcd1b0312d
+c
+3src/app/controllers/DownloadProgressController.java,d\f\dfc5ac07c818332bcbfedca0c954a0d66268d641
+]
+-test/app/controllers/LoginControllerTest.java,3\2\32f7a25a9c30ce8f61d369673dd0967577225387
+[
++src/app/controllers/MaterialController.java,a\b\ab4955d173b6f3198b3bd89ceb1478e685b071dd
+b
+2src/app/controllers/DetailsMaterialController.java,0\8\08840c7aa8c39b361f07994bd0ce9a4caaf096f1
+X
+(src/app/controllers/LoginController.java,d\d\dd0c816b47873dc0939a1fb1c74884f5d12eb360
+W
+'src/app/controllers/MainController.java,e\c\ec8d8150df4c9e8db173ad3c7a919af5b8b34239

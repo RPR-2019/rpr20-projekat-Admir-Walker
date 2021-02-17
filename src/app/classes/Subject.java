@@ -5,6 +5,7 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 
 import java.util.Locale;
+import java.util.Objects;
 
 public class Subject {
     private SimpleIntegerProperty id = new SimpleIntegerProperty(0);
@@ -64,5 +65,18 @@ public class Subject {
 
     public boolean isSubstring(String searchParam) {
         return getName().toLowerCase(Locale.ROOT).contains(searchParam.toLowerCase(Locale.ROOT));
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Subject subject = (Subject) o;
+        return Objects.equals(getId(), subject.getId());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }
