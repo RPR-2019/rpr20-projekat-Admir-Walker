@@ -17,7 +17,6 @@ import javafx.scene.layout.Region;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
 
-import javax.print.Doc;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -33,12 +32,7 @@ public class MaterialController {
     private final Subject selectedSubject;
     private final DocumentDAO documentDAO;
 
-    public TableColumn colName;
-    public TableColumn colLocation;
-    public TableColumn colDate;
-    public TableColumn colAuthor;
-    public TableView<Document> materialTable;
-
+    public ListView<Document> documentList;
     public Button btnAddMaterial;
 
     public MaterialController(User author, Subject selectedSubject, DocumentDAO documentDAO) {
@@ -50,9 +44,9 @@ public class MaterialController {
     @FXML
     public void initialize() {
         tableInit();
-        materialTable.setOnMouseClicked(mouseEvent -> {
+        documentList.setOnMouseClicked(mouseEvent -> {
             if (mouseEvent.getButton() == MouseButton.PRIMARY && mouseEvent.getClickCount() > 1) {
-                if (materialTable.getSelectionModel().getSelectedItem() != null) {
+                if (documentList.getSelectionModel().getSelectedItem() != null) {
                     documentPicker();
                 }
             }
@@ -62,11 +56,7 @@ public class MaterialController {
     }
 
     private void tableInit() {
-        colName.setCellValueFactory(new PropertyValueFactory<Document, String>("name"));
-        colLocation.setCellValueFactory(new PropertyValueFactory<Document, String>("path"));
-        colDate.setCellValueFactory(new PropertyValueFactory<Document, String>("uploadDate"));
-        colAuthor.setCellValueFactory(new PropertyValueFactory<Document, User>("author"));
-        materialTable.setItems(FXCollections.observableArrayList(documentDAO.fetchDocumentList(selectedSubject)));
+        documentList.setItems(FXCollections.observableArrayList(documentDAO.fetchDocumentList(selectedSubject)));
     }
 
     private void addMaterial() {
@@ -87,7 +77,7 @@ public class MaterialController {
     }
 
     private void documentPicker() {
-        Document document = (Document) materialTable.getSelectionModel().getSelectedItem();
+        Document document = documentList.getSelectionModel().getSelectedItem();
         if (document.isDownloadable()) {
 
             DirectoryChooser directoryChooser = new DirectoryChooser();
@@ -160,16 +150,16 @@ public class MaterialController {
         MenuItem delete = new MenuItem("Delete");
         contextMenu.getItems().addAll(details, delete);
         details.setOnAction(actionEvent -> {
-            if (materialTable.getSelectionModel().getSelectedItem() != null) {
-                openDetails(materialTable.getSelectionModel().getSelectedItem());
+            if (documentList.getSelectionModel().getSelectedItem() != null) {
+                openDetails(documentList.getSelectionModel().getSelectedItem());
             }
         });
         delete.setOnAction(actionEvent -> {
-            if (materialTable.getSelectionModel().getSelectedItem() != null) {
-                deleteDocument(materialTable.getSelectionModel().getSelectedItem());
+            if (documentList.getSelectionModel().getSelectedItem() != null) {
+                deleteDocument(documentList.getSelectionModel().getSelectedItem());
             }
         });
-        materialTable.setContextMenu(contextMenu);
+        documentList.setContextMenu(contextMenu);
     }
 
     private void openDetails(Document document) {

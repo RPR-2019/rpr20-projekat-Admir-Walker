@@ -148,4 +148,9 @@ public class Document {
     public int getSubjectID() {
         return getSubject().getId();
     }
+
+    @Override
+    public String toString() {
+        return getName();
+    }
 }

@@ -25,7 +25,7 @@ public class MainController {
     private final MainScreenModel mainScreenModel;
 
     public TextField searchField;
-    public ListView<Subject> spisakPredmeta;
+    public ListView<Subject> subjectList;
 
 
     public MainController(User user, SubjectDAO subjectDAO, MainScreenModel mainScreenModel) {
@@ -37,23 +37,23 @@ public class MainController {
     @FXML
     public void initialize() {
         mainScreenModel.setSubjects(subjectDAO.fetchSubjects());
-        spisakPredmeta.setItems(mainScreenModel.getSubjects());
-        spisakPredmeta.setOnMouseClicked(mouseEvent -> {
+        subjectList.setItems(mainScreenModel.getSubjects());
+        subjectList.setOnMouseClicked(mouseEvent -> {
             if (mouseEvent.getButton() == MouseButton.PRIMARY && mouseEvent.getClickCount() > 1) {
-                if(spisakPredmeta.getSelectionModel().getSelectedItem()!=null){
+                if(subjectList.getSelectionModel().getSelectedItem()!=null){
                     openMaterial();
                 }
             }
         });
         searchField.textProperty().addListener((observableValue, s, t1) -> {
             if (t1 != null) {
-                spisakPredmeta.setItems(mainScreenModel.search(t1));
+                subjectList.setItems(mainScreenModel.search(t1));
             }
         });
     }
     private void openMaterial(){
         try {
-            MaterialController materialController = new MaterialController(currentUser, spisakPredmeta.getSelectionModel().getSelectedItem(), DocumentDAO.getInstance());
+            MaterialController materialController = new MaterialController(currentUser, subjectList.getSelectionModel().getSelectedItem(), DocumentDAO.getInstance());
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/material.fxml"));
             loader.setController(materialController);
             Parent root = loader.load();
