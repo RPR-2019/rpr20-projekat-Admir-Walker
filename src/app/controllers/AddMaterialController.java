@@ -1,6 +1,7 @@
 package app.controllers;
 
 import app.classes.UploadTask;
+import app.models.AddMaterialModel;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -17,13 +18,13 @@ public class AddMaterialController {
     public Button btnCancel;
     public TextField pathField;
 
-    private int authorID;
-    private int subjectID;
+    private final AddMaterialModel addMaterialModel;
 
-    public AddMaterialController(int authorID, int subjectID) {
-        this.authorID = authorID;
-        this.subjectID = subjectID;
+    public AddMaterialController(AddMaterialModel addMaterialModel) {
+        this.addMaterialModel = addMaterialModel;
     }
+
+
 
     @FXML
     public void initialize() {
@@ -47,7 +48,7 @@ public class AddMaterialController {
 
     private void uploadFile(MouseEvent mouseEvent) {
         if (!pathField.getText().trim().isEmpty()) {
-            String uploadURL = "http://localhost/fileupload/index.php?subject=" + subjectID + "&author=" + authorID;
+            String uploadURL = "http://localhost/fileupload/index.php?subject=" + addMaterialModel.getSubjectID() + "&author=" + addMaterialModel.getAuthorID();
             String filePath = pathField.getText();
             File uploadFile = new File(filePath);
             UploadTask task = new UploadTask(uploadURL, uploadFile);

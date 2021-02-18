@@ -50,7 +50,6 @@ public class DetailsMaterialController {
             updateDocument();
             closeStage(mouseEvent);
         });
-        prepareSubjectCheckbox();
     }
 
     private void fillForm() {
@@ -60,7 +59,7 @@ public class DetailsMaterialController {
         fieldDate.setText(document.getUploadDate());
         fieldAuthor.setText(document.getAuthorFullName());
         fieldSize.setText("" + document.getSize());
-        // choiceSubject.setItems(null); TO DO
+        prepareSubjectCheckbox();
         cboxDownloadable.selectedProperty().set(document.isDownloadable());
         cboxHide.selectedProperty().set(false); // za sad false, omoguciti izmjene :)
         fieldType.setText(document.getType());

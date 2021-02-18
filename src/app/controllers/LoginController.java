@@ -2,7 +2,7 @@ package app.controllers;
 
 import app.classes.ErrorAlert;
 import app.classes.User;
-import app.models.MainScreenModel;
+import app.models.MainModel;
 import app.models.SubjectDAO;
 import app.models.UserDAO;
 import javafx.event.ActionEvent;
@@ -32,7 +32,7 @@ public class LoginController {
         User user = new User(0, "", "", fieldEmail.getText().toLowerCase(), fieldPassword.getText(), null);
         user = userDAO.checkLogin(user);
         if (user != null) {
-            MainController mainController = new MainController(user, SubjectDAO.getInstance(), new MainScreenModel());
+            MainController mainController = new MainController(user, SubjectDAO.getInstance(), new MainModel());
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/main.fxml"));
             loader.setController(mainController);
             Parent root = loader.load();

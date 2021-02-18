@@ -1,5 +1,7 @@
 
+L
+java:S1066+"/Merge this if statement with the enclosing one.(îƒ’Ë8øË«’û.
 r
 java:S1104"WMake searchField a static final constant or non-public and provide accessors if needed.(Û½ÃÎûÿÿÿÿ
-u
-java:S1104"ZMake spisakPredmeta a static final constant or non-public and provide accessors if needed.(ŞùÉ²üÿÿÿÿ
+t
+java:S1104"WMake subjectList a static final constant or non-public and provide accessors if needed.(õøá«8·Óß“û.

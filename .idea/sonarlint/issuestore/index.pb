@@ -55,3 +55,17 @@ X
 (src/app/controllers/LoginController.java,d\d\dd0c816b47873dc0939a1fb1c74884f5d12eb360
 W
 'src/app/controllers/MainController.java,e\c\ec8d8150df4c9e8db173ad3c7a919af5b8b34239
+k
+;out/production/RPRFinalniProjekat/fxml/detailsMaterial.fxml,d\b\db8eb135f875fa6b95adafbd12d32883e06090c7
+l
+<out/production/RPRFinalniProjekat/fxml/downloadProgress.fxml,7\5\75c934d7b580ec1192bbcd0c918ca002c9f07bc0
+a
+1out/production/RPRFinalniProjekat/fxml/login.fxml,5\2\52e9097d4c683e5f8d3ac58689819ecb0761d222
+T
+$resources/fxml/downloadProgress.fxml,e\a\eaff10a6a1c2fc35e47579b6a503e05d5064a8f2
+I
+resources/fxml/login.fxml,8\2\82c591fb13b8d561beda7548c6e5f0df218b604c
+`
+0out/production/RPRFinalniProjekat/fxml/main.fxml,7\9\7990d5b5057c814f0f50bc97f80f1f38d6bad595
+d
+4out/production/RPRFinalniProjekat/fxml/material.fxml,d\8\d81e800cdbf7c9d9ea595642c36ad1fa175d6aca

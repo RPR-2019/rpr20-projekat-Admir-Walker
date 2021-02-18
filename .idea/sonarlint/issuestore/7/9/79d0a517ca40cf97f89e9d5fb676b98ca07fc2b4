@@ -1,5 +1,5 @@
 
-W
-java:S1854"<Remove this useless assignment to local variable "database".(¨‘ì8áÛüçú.
-H
-java:S1481"-Remove this unused "database" local variable.(¨‘ì8áÛüçú.
+Y
+java:S1854""<Remove this useless assignment to local variable "database".(¨‘ì8áÛüçú.
+J
+java:S1481""-Remove this unused "database" local variable.(¨‘ì8áÛüçú.

@@ -6,7 +6,7 @@ import javafx.collections.ObservableList;
 
 import java.util.List;
 
-public class MainScreenModel {
+public class MainModel {
     private ObservableList<Subject> subjects = FXCollections.observableArrayList();
 
     public void setSubjects(List<Subject> subjectList) {

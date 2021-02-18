@@ -6,6 +6,7 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 
 import java.time.LocalDate;
+import java.util.Locale;
 
 public class Document {
     private SimpleIntegerProperty id = new SimpleIntegerProperty(0);
@@ -152,5 +153,8 @@ public class Document {
     @Override
     public String toString() {
         return getName();
+    }
+    public boolean isSubstring(String searchParam) {
+        return getName().toLowerCase(Locale.ROOT).contains(searchParam.toLowerCase(Locale.ROOT));
     }
 }

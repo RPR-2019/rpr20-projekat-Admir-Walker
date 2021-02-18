@@ -3,7 +3,8 @@ package app.controllers;
 import app.classes.Subject;
 import app.classes.User;
 import app.models.DocumentDAO;
-import app.models.MainScreenModel;
+import app.models.MainModel;
+import app.models.MaterialModel;
 import app.models.SubjectDAO;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -22,22 +23,22 @@ public class MainController {
 
     private final User currentUser;
     private final SubjectDAO subjectDAO;
-    private final MainScreenModel mainScreenModel;
+    private final MainModel mainModel;
 
     public TextField searchField;
     public ListView<Subject> subjectList;
 
 
-    public MainController(User user, SubjectDAO subjectDAO, MainScreenModel mainScreenModel) {
+    public MainController(User user, SubjectDAO subjectDAO, MainModel mainModel) {
         this.currentUser = user;
         this.subjectDAO = subjectDAO;
-        this.mainScreenModel = mainScreenModel;
+        this.mainModel = mainModel;
     }
 
     @FXML
     public void initialize() {
-        mainScreenModel.setSubjects(subjectDAO.fetchSubjects());
-        subjectList.setItems(mainScreenModel.getSubjects());
+        mainModel.setSubjects(subjectDAO.fetchSubjects());
+        subjectList.setItems(mainModel.getSubjects());
         subjectList.setOnMouseClicked(mouseEvent -> {
             if (mouseEvent.getButton() == MouseButton.PRIMARY && mouseEvent.getClickCount() > 1) {
                 if(subjectList.getSelectionModel().getSelectedItem()!=null){
@@ -47,13 +48,14 @@ public class MainController {
         });
         searchField.textProperty().addListener((observableValue, s, t1) -> {
             if (t1 != null) {
-                subjectList.setItems(mainScreenModel.search(t1));
+                subjectList.setItems(mainModel.search(t1));
             }
         });
     }
     private void openMaterial(){
         try {
-            MaterialController materialController = new MaterialController(currentUser, subjectList.getSelectionModel().getSelectedItem(), DocumentDAO.getInstance());
+            MaterialModel materialModel = new MaterialModel(currentUser, subjectList.getSelectionModel().getSelectedItem(), DocumentDAO.getInstance());
+            MaterialController materialController = new MaterialController(materialModel);
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/material.fxml"));
             loader.setController(materialController);
             Parent root = loader.load();

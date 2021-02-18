@@ -1,31 +1,31 @@
 
 y
-java:S1104"WMake documentDAO a static final constant or non-public and provide accessors if needed.(¿óîÔüÿÿÿÿ8ß›‰û.
-q
-java:S1104""TMake cboxHide a static final constant or non-public and provide accessors if needed.(ç©Ëî8«ºšˆû.
-x
-java:S1104!"\Make cboxDownloadable a static final constant or non-public and provide accessors if needed.(††©]8«ºšˆû.
-w
-java:S1104"UMake fieldSize a static final constant or non-public and provide accessors if needed.(—¹Æ şÿÿÿÿ8«ºšˆû.
+java:S1104"WMake documentDAO a static final constant or non-public and provide accessors if needed.(¿óîÔüÿÿÿÿ8‰Öâ’û.
 s
-java:S1104"VMake subjectDAO a static final constant or non-public and provide accessors if needed.(ÈºĞç8ß›‰û.
-w
-java:S1104"UMake fieldName a static final constant or non-public and provide accessors if needed.(¬³Ê¢ıÿÿÿÿ8Ì¨«ˆû.
-r
-java:S1104"UMake fieldDate a static final constant or non-public and provide accessors if needed.(’¥ Î8«ºšˆû.
-n
-java:S1104#"QMake btnOk a static final constant or non-public and provide accessors if needed.(‰õÀæ8«ºšˆû.
+java:S1104"VMake subjectDAO a static final constant or non-public and provide accessors if needed.(ÈºĞç8‰Öâ’û.
 u
-java:S1104"SMake fieldId a static final constant or non-public and provide accessors if needed.(ÇäœÙüÿÿÿÿ8Ì¨«ˆû.
-{
-java:S1104 "YMake choiceSubject a static final constant or non-public and provide accessors if needed.(Ğ…Ù—øÿÿÿÿ8«ºšˆû.
-r
-java:S1104$"UMake btnCancel a static final constant or non-public and provide accessors if needed.(ñÙ•Ó8«ºšˆû.
+java:S1104"SMake fieldId a static final constant or non-public and provide accessors if needed.(ÇäœÙüÿÿÿÿ8‰Öâ’û.
 w
-java:S1104%"UMake fieldType a static final constant or non-public and provide accessors if needed.(Ñã²–üÿÿÿÿ8«ºšˆû.
-t
-java:S1104"WMake fieldAuthor a static final constant or non-public and provide accessors if needed.(í€ì¬8«ºšˆû.
+java:S1104"UMake fieldName a static final constant or non-public and provide accessors if needed.(¬³Ê¢ıÿÿÿÿ8‰Öâ’û.
 r
-java:S1104"UMake fieldPath a static final constant or non-public and provide accessors if needed.(µæ‘‰8«ºšˆû.
+java:S1104"UMake fieldPath a static final constant or non-public and provide accessors if needed.(µæ‘‰8‰Öâ’û.
+r
+java:S1104"UMake fieldDate a static final constant or non-public and provide accessors if needed.(’¥ Î8‰Öâ’û.
+t
+java:S1104"WMake fieldAuthor a static final constant or non-public and provide accessors if needed.(í€ì¬8‰Öâ’û.
+w
+java:S1104"UMake fieldSize a static final constant or non-public and provide accessors if needed.(—¹Æ şÿÿÿÿ8‰Öâ’û.
+{
+java:S1104 "YMake choiceSubject a static final constant or non-public and provide accessors if needed.(Ğ…Ù—øÿÿÿÿ8‰Öâ’û.
+x
+java:S1104!"\Make cboxDownloadable a static final constant or non-public and provide accessors if needed.(††©]8‰Öâ’û.
+q
+java:S1104""TMake cboxHide a static final constant or non-public and provide accessors if needed.(ç©Ëî8‰Öâ’û.
+n
+java:S1104#"QMake btnOk a static final constant or non-public and provide accessors if needed.(‰õÀæ8‰Öâ’û.
+r
+java:S1104$"UMake btnCancel a static final constant or non-public and provide accessors if needed.(ñÙ•Ó8‰Öâ’û.
+w
+java:S1104%"UMake fieldType a static final constant or non-public and provide accessors if needed.(Ñã²–üÿÿÿÿ8‰Öâ’û.
 `
-java:S1128">Remove this unused import 'javafx.collections.ObservableList'.(ÄÜ€éüÿÿÿÿ8¸ŒÃ‰û.
+java:S1128">Remove this unused import 'javafx.collections.ObservableList'.(ÄÜ€éüÿÿÿÿ8‰Öâ’û.

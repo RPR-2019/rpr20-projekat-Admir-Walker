@@ -3,7 +3,9 @@ package app.controllers;
 import app.classes.Document;
 import app.classes.Subject;
 import app.classes.User;
+import app.models.AddMaterialModel;
 import app.models.DocumentDAO;
+import app.models.MaterialModel;
 import app.models.SubjectDAO;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
@@ -11,7 +13,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.Region;
 import javafx.stage.DirectoryChooser;
@@ -28,22 +29,21 @@ import java.nio.file.Path;
 import java.sql.SQLException;
 
 public class MaterialController {
-    private final User author;
-    private final Subject selectedSubject;
-    private final DocumentDAO documentDAO;
 
+    public TextField searchField;
     public ListView<Document> documentList;
     public Button btnAddMaterial;
 
-    public MaterialController(User author, Subject selectedSubject, DocumentDAO documentDAO) {
-        this.author = author;
-        this.selectedSubject = selectedSubject;
-        this.documentDAO = documentDAO;
+    private final MaterialModel materialModel;
+
+    public MaterialController(MaterialModel materialModel) {
+        this.materialModel = materialModel;
     }
 
     @FXML
     public void initialize() {
         tableInit();
+        setupControls();
         documentList.setOnMouseClicked(mouseEvent -> {
             if (mouseEvent.getButton() == MouseButton.PRIMARY && mouseEvent.getClickCount() > 1) {
                 if (documentList.getSelectionModel().getSelectedItem() != null) {
@@ -52,16 +52,21 @@ public class MaterialController {
             }
         });
         btnAddMaterial.setOnMouseClicked(mouseEvent -> addMaterial());
-        setupControls();
+        searchField.textProperty().addListener((observableValue, s, t1) -> {
+            if (t1 != null) {
+                documentList.setItems(materialModel.search(t1));
+            }
+        });
     }
 
     private void tableInit() {
-        documentList.setItems(FXCollections.observableArrayList(documentDAO.fetchDocumentList(selectedSubject)));
+        documentList.setItems(materialModel.fetchDocuments());
     }
 
     private void addMaterial() {
         try {
-            AddMaterialController addMaterialController = new AddMaterialController(author.getId(), selectedSubject.getId());
+            AddMaterialModel addMaterialModel = new AddMaterialModel(materialModel.getAuthorID(), materialModel.getSelectedSubjectID());
+            AddMaterialController addMaterialController = new AddMaterialController(addMaterialModel);
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/addMaterial.fxml"));
             loader.setController(addMaterialController);
 
@@ -164,12 +169,14 @@ public class MaterialController {
 
     private void openDetails(Document document) {
         try {
-            DetailsMaterialController detailsMaterialController = new DetailsMaterialController(document, documentDAO, SubjectDAO.getInstance());
+            DetailsMaterialController detailsMaterialController = new DetailsMaterialController(document, DocumentDAO.getInstance(), SubjectDAO.getInstance());
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/detailsMaterial.fxml"));
             loader.setController(detailsMaterialController);
             Parent root = loader.load();
             Stage stage = new Stage();
-            stage.setOnHiding(windowEvent -> tableInit());
+            stage.setOnHiding(windowEvent -> {
+                tableInit();
+            });
             stage.setTitle("Detalji o dokumentu");
             stage.setScene(new Scene(root, Region.USE_COMPUTED_SIZE, Region.USE_COMPUTED_SIZE));
             stage.show();
@@ -183,8 +190,8 @@ public class MaterialController {
         alert.setTitle("Upozorenje o brisanju");
         alert.setContentText("Da li zelite obrisati");
         alert.showAndWait();
-        if(alert.getResult().getButtonData().isDefaultButton()){
-            documentDAO.delete(document);
+        if (alert.getResult().getButtonData().isDefaultButton()) {
+            materialModel.delete(document);
             tableInit();
         }
     }
