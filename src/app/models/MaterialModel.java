@@ -15,7 +15,7 @@ public class MaterialModel {
     private final User author;
     private final Subject selectedSubject;
     private final DocumentDAO documentDAO;
-    private List<Document> documentList;
+    private List<Document> documentList = new ArrayList<>();
 
     public MaterialModel(User author, Subject selectedSubject, DocumentDAO documentDAO) {
         this.author = author;

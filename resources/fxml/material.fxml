@@ -24,7 +24,7 @@
         </rowConstraints>
          <children>
             <ListView fx:id="documentList" prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="2147483647" GridPane.rowIndex="1" GridPane.rowSpan="2147483647" />
-            <TextField fx:id="searchField" GridPane.columnSpan="2147483647" />
+            <TextField fx:id="searchField" promptText="Filtriraj..." GridPane.columnSpan="2147483647" />
          </children>
          <BorderPane.margin>
             <Insets bottom="5.0" />

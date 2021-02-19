@@ -34,7 +34,7 @@ public class AddMaterialController {
             }
         });
         btnAdd.setOnMouseClicked(this::uploadFile);
-        btnCancel.setOnMouseClicked(mouseEvent -> ((Node) mouseEvent.getSource()).getScene().getWindow().hide());
+        btnCancel.setOnMouseClicked(mouseEvent -> ((Stage) ((Node) mouseEvent.getSource()).getScene().getWindow()).close());
     }
 
     private void chooseFile() {

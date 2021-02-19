@@ -32,7 +32,8 @@ public class LoginController {
         User user = new User(0, "", "", fieldEmail.getText().toLowerCase(), fieldPassword.getText(), null);
         user = userDAO.checkLogin(user);
         if (user != null) {
-            MainController mainController = new MainController(user, SubjectDAO.getInstance(), new MainModel());
+            MainModel mainModel = new MainModel(user, SubjectDAO.getInstance());
+            MainController mainController = new MainController(mainModel);
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/main.fxml"));
             loader.setController(mainController);
             Parent root = loader.load();

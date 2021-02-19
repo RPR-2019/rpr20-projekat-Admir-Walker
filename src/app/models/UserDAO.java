@@ -8,6 +8,8 @@ import app.settings.Database;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserDAO {
 
@@ -16,11 +18,13 @@ public class UserDAO {
 
     private PreparedStatement checkLoginAndAssignData;
     private PreparedStatement assignDataViaID;
+    private PreparedStatement fetchProfessors;
 
     private UserDAO() throws SQLException {
         database = Database.getInstance();
         checkLoginAndAssignData = database.addPreparedStatement("select * from user where email=? and password=?");
         assignDataViaID = database.addPreparedStatement("select * from user where userID = ?");
+        fetchProfessors = database.addPreparedStatement("select * from user where userType = 3 order by firstName;");
     }
 
     public static UserDAO getInstance() throws SQLException {
@@ -77,6 +81,26 @@ public class UserDAO {
             throwables.printStackTrace();
         }
 
+        return null;
+    }
+    public List<User> fetchProfessors(){
+        try {
+            List<User> professors = new ArrayList<>();
+            ResultSet resultSet = fetchProfessors.executeQuery();
+            while (resultSet.next()){
+                professors.add(new User(
+                   resultSet.getInt(1),
+                   resultSet.getString(2),
+                   resultSet.getString(3),
+                   resultSet.getString(4),
+                   "",
+                   UserType.of(resultSet.getInt(6))
+                ));
+            }
+            return professors;
+        } catch (SQLException | UserTypeNotFoundException exception) {
+            exception.printStackTrace();
+        }
         return null;
     }
 

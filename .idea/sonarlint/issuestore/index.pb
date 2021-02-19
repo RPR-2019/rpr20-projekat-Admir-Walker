@@ -23,8 +23,6 @@ M
 src/app/classes/UserType.java,1\7\17262d9879ffa04ca73f780a517066c080e0a437
 a
 1src/app/exceptions/UserTypeNotFoundException.java,4\4\44a43caaf5c63a28a8fc3ee1887c2b936ab10560
-S
-#src/app/models/MainScreenModel.java,a\9\a9e17a5cecdecb802e85737dcd5ea245b609dd93
 e
 5.idea/libraries/mysql_mysql_connector_java_8_0_23.xml,3\1\3157fbe0201443e8a6b3c205210417439a3162d9
 N
@@ -69,3 +67,9 @@ I
 0out/production/RPRFinalniProjekat/fxml/main.fxml,7\9\7990d5b5057c814f0f50bc97f80f1f38d6bad595
 d
 4out/production/RPRFinalniProjekat/fxml/material.fxml,d\8\d81e800cdbf7c9d9ea595642c36ad1fa175d6aca
+T
+$src/app/models/AddMaterialModel.java,0\b\0b4b420838c4defadd5c742b6263a75a4f7510ba
+M
+src/app/models/MainModel.java,0\1\01ba87bf5035a18567b3ac4f2e9919a891ebc997
+Q
+!src/app/models/MaterialModel.java,a\1\a1676bb6bdcce9f51da472a6ab65523355d1412c

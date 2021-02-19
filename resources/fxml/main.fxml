@@ -16,11 +16,18 @@
         </rowConstraints>
          <children>
             <ListView fx:id="subjectList" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
-            <TextField fx:id="searchField" />
+            <TextField fx:id="searchField" promptText="Filtriraj..." />
          </children>
          <BorderPane.margin>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </BorderPane.margin>
       </GridPane>
    </center>
+   <bottom>
+      <Button fx:id="btnAddSubject" mnemonicParsing="false" text="Dodaj" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets bottom="5.0" />
+         </BorderPane.margin>
+      </Button>
+   </bottom>
 </BorderPane>

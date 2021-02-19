@@ -66,6 +66,9 @@ public class Subject {
     public boolean isSubstring(String searchParam) {
         return getName().toLowerCase(Locale.ROOT).contains(searchParam.toLowerCase(Locale.ROOT));
     }
+    public int getProfessorId(){
+        return getProfessor().getId();
+    }
 
     @Override
     public boolean equals(Object o) {

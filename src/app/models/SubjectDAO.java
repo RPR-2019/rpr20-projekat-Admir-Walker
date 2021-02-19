@@ -16,10 +16,12 @@ public class SubjectDAO {
     private static Database database;
 
     private PreparedStatement fetchAllSubjects;
+    private PreparedStatement addSubject;
 
     private SubjectDAO() throws SQLException {
         database = Database.getInstance();
-        fetchAllSubjects = database.addPreparedStatement("select * from subject order by name asc");
+        fetchAllSubjects = database.addPreparedStatement("select * from subject order by name asc;");
+        addSubject = database.addPreparedStatement("insert into subject(name,professor) values (?, ?);");
     }
 
     public static SubjectDAO getInstance() throws SQLException {
@@ -61,5 +63,14 @@ public class SubjectDAO {
             throwables.printStackTrace();
         }
         return null;
+    }
+    public void addSubject(Subject subject){
+        try {
+            addSubject.setString(1,subject.getName());
+            addSubject.setInt(2, subject.getProfessorId());
+            addSubject.execute();
+        } catch (SQLException exception) {
+            exception.printStackTrace();
+        }
     }
 }

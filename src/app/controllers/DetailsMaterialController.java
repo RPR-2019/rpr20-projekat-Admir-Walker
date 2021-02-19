@@ -58,7 +58,7 @@ public class DetailsMaterialController {
         fieldPath.setText(document.getPath());
         fieldDate.setText(document.getUploadDate());
         fieldAuthor.setText(document.getAuthorFullName());
-        fieldSize.setText("" + document.getSize());
+        adjustSizeFormat();
         prepareSubjectCheckbox();
         cboxDownloadable.selectedProperty().set(document.isDownloadable());
         cboxHide.selectedProperty().set(false); // za sad false, omoguciti izmjene :)
@@ -73,6 +73,14 @@ public class DetailsMaterialController {
         document.setName(fieldName.getText());
         document.setSubject(choiceSubject.getSelectionModel().getSelectedItem());
         documentDAO.update(document);
+    }
+    private void adjustSizeFormat(){
+        if(Double.compare(document.getSize(), Math.pow(1024,2)) > 0){
+            fieldSize.setText("" + Math.round(document.getSize()/Math.pow(1024,2)) + " MB");
+        }
+        else{
+            fieldSize.setText("" + Math.round(document.getSize()/1024.0) + " KB");
+        }
     }
     private void prepareSubjectCheckbox(){
         List<Subject> subjectList = subjectDAO.fetchSubjects();

@@ -1,6 +1,7 @@
 package app.models;
 
 import app.classes.Subject;
+import app.classes.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -8,6 +9,13 @@ import java.util.List;
 
 public class MainModel {
     private ObservableList<Subject> subjects = FXCollections.observableArrayList();
+    private final User user;
+    private final SubjectDAO subjectDAO;
+
+    public MainModel(User user, SubjectDAO subjectDAO) {
+        this.user = user;
+        this.subjectDAO = subjectDAO;
+    }
 
     public void setSubjects(List<Subject> subjectList) {
         subjects = FXCollections.observableArrayList(subjectList);
@@ -21,6 +29,14 @@ public class MainModel {
         this.subjects = listaPredmeta;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public SubjectDAO getSubjectDAO() {
+        return subjectDAO;
+    }
+
     public ObservableList<Subject> search(String searchParam) {
         ObservableList<Subject> filteredSubjects = FXCollections.observableArrayList();
         subjects.forEach(subject -> {
@@ -29,5 +45,8 @@ public class MainModel {
             }
         });
         return filteredSubjects;
+    }
+    public List<Subject> fetchSubjects(){
+        return subjectDAO.fetchSubjects();
     }
 }

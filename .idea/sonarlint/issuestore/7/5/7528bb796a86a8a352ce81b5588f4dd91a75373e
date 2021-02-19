@@ -1,9 +1,9 @@
 
+p
+java:S1104"UMake btnCancel a static final constant or non-public and provide accessors if needed.(ñÙ•Ó8¦ğú­û.
 m
-java:S1104"RMake btnAdd a static final constant or non-public and provide accessors if needed.(‰ÂÈ8Ê¼ˆû.
+java:S1104"RMake btnAdd a static final constant or non-public and provide accessors if needed.(‰ÂÈ8¦ğú­û.
 p
-java:S1104"UMake btnCancel a static final constant or non-public and provide accessors if needed.(ñÙ•Ó8Ê¼ˆû.
-p
-java:S1104"UMake pathField a static final constant or non-public and provide accessors if needed.(åò¼ô8Ê¼ˆû.
+java:S1104"UMake pathField a static final constant or non-public and provide accessors if needed.(åò¼ô8¦ğú­û.
 G
-java:S1612",Replace this lambda with a method reference.(®Áš¾8Ê¼ˆû.
+java:S1612",Replace this lambda with a method reference.(®Áš¾8¦ğú­û.
