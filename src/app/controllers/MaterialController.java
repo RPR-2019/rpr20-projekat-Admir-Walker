@@ -1,6 +1,7 @@
 package app.controllers;
 
 import app.classes.Document;
+import app.classes.MenuPopUp;
 import app.classes.Subject;
 import app.classes.User;
 import app.models.AddMaterialModel;
@@ -28,7 +29,7 @@ import java.nio.channels.ReadableByteChannel;
 import java.nio.file.Path;
 import java.sql.SQLException;
 
-public class MaterialController {
+public class MaterialController implements MenuPopUp.ContextAction {
 
     public TextField searchField;
     public ListView<Document> documentList;
@@ -150,23 +151,24 @@ public class MaterialController {
     }
 
     private void setupControls() {
-        ContextMenu contextMenu = new ContextMenu();
-        MenuItem details = new MenuItem("Details");
-        MenuItem delete = new MenuItem("Delete");
-        contextMenu.getItems().addAll(details, delete);
-        details.setOnAction(actionEvent -> {
-            if (documentList.getSelectionModel().getSelectedItem() != null) {
-                openDetails(documentList.getSelectionModel().getSelectedItem());
-            }
-        });
-        delete.setOnAction(actionEvent -> {
-            if (documentList.getSelectionModel().getSelectedItem() != null) {
-                deleteDocument(documentList.getSelectionModel().getSelectedItem());
-            }
-        });
+        MenuPopUp menuPopUp = new MenuPopUp(this);
+        ContextMenu contextMenu = menuPopUp.createContextMenu();
         documentList.setContextMenu(contextMenu);
     }
 
+    @Override
+    public void detailsAction() {
+        if (documentList.getSelectionModel().getSelectedItem() != null) {
+            openDetails(documentList.getSelectionModel().getSelectedItem());
+        }
+    }
+
+    @Override
+    public void deleteAction() {
+        if (documentList.getSelectionModel().getSelectedItem() != null) {
+            deleteDocument(documentList.getSelectionModel().getSelectedItem());
+        }
+    }
     private void openDetails(Document document) {
         try {
             DetailsMaterialController detailsMaterialController = new DetailsMaterialController(document, DocumentDAO.getInstance(), SubjectDAO.getInstance());

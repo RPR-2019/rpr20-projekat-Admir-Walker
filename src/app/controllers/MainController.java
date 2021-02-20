@@ -1,5 +1,7 @@
 package app.controllers;
 
+import app.classes.Document;
+import app.classes.MenuPopUp;
 import app.classes.Subject;
 import app.classes.User;
 import app.models.*;
@@ -8,9 +10,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.Region;
 import javafx.stage.Stage;
@@ -18,7 +18,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.sql.SQLException;
 
-public class MainController {
+public class MainController implements MenuPopUp.ContextAction {
 
     private final MainModel mainModel;
 
@@ -83,5 +83,31 @@ public class MainController {
         } catch (IOException | SQLException e) {
             e.printStackTrace();
         }
+    }
+    private void setupControls() {
+        MenuPopUp menuPopUp = new MenuPopUp(this);
+        ContextMenu contextMenu = menuPopUp.createContextMenu();
+        subjectList.setContextMenu(contextMenu);
+    }
+
+    @Override
+    public void detailsAction() {
+        if (subjectList.getSelectionModel().getSelectedItem() != null) {
+            openDetails(subjectList.getSelectionModel().getSelectedItem());
+        }
+    }
+
+    @Override
+    public void deleteAction() {
+        if (subjectList.getSelectionModel().getSelectedItem() != null) {
+            deleteDocument(subjectList.getSelectionModel().getSelectedItem());
+        }
+    }
+    private void openDetails(Subject subject) {
+
+    }
+
+    private void deleteDocument(Subject subject) {
+
     }
 }

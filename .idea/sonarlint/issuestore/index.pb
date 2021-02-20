@@ -73,3 +73,13 @@ M
 src/app/models/MainModel.java,0\1\01ba87bf5035a18567b3ac4f2e9919a891ebc997
 Q
 !src/app/models/MaterialModel.java,a\1\a1676bb6bdcce9f51da472a6ab65523355d1412c
+N
+resources/fxml/addSubject.fxml,b\7\b76a70b1a52e90e365875c55e1c51535d3f50255
+]
+-src/app/controllers/AddSubjectController.java,0\3\03ae06259ef6a2b67b96f4e0d1117112d8317fa8
+S
+#src/app/models/AddSubjectModel.java,a\0\a0fb82ddd519cde4988b982d6a85bed4332a3e8e
+H
+resources/fxml/main.fxml,1\7\1717211d21a149ed417a055ba59f01ec1c546de5
+L
+resources/fxml/material.fxml,3\a\3ae2e4288eeee5ae81e2a5e7a5dbae985aa70255
