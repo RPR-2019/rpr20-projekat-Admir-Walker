@@ -1,4 +1,4 @@
-package app.controllers;
+package app.models;
 
 import app.classes.Subject;
 import app.classes.User;

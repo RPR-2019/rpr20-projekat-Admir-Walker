@@ -1,6 +1,7 @@
 package app.controllers;
 
 import app.classes.User;
+import app.models.DetailsSubjectModel;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;

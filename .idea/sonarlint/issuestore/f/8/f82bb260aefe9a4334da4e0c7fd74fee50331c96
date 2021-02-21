@@ -1,0 +1,13 @@
+
+T
+java:S3655."7Call "Optional#isPresent()" before accessing the value.(“öçÌ8Å×Çü.
+u
+java:S1104"SMake fieldId a static final constant or non-public and provide accessors if needed.(ÇäœÙüÿÿÿÿ8Å×Çü.
+w
+java:S1104"UMake fieldName a static final constant or non-public and provide accessors if needed.(¬³Ê¢ıÿÿÿÿ8Å×Çü.
+x
+java:S1104"[Make choiceProfessor a static final constant or non-public and provide accessors if needed.(÷…ˆŞ8Å×Çü.
+n
+java:S1104"QMake btnOk a static final constant or non-public and provide accessors if needed.(‰õÀæ8Å×Çü.
+r
+java:S1104"UMake btnCancel a static final constant or non-public and provide accessors if needed.(ñÙ•Ó8Å×Çü.

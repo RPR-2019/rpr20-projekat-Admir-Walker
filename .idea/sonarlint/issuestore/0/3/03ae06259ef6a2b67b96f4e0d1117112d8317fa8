@@ -1,13 +1,13 @@
 
-x
-java:S11922"VDefine a constant instead of duplicating this literal "Profesor nije izabran" 3 times.(õ£É‹øÿÿÿÿ8¥Ñãû.
+h
+java:S1192"MDefine a constant instead of duplicating this literal "Naziv prazan" 3 times.(‚±õİ8™äô‹ü.
+m
+java:S1104"RMake btnAdd a static final constant or non-public and provide accessors if needed.(‰ÂÈ8™äô‹ü.
+p
+java:S1104"UMake btnCancel a static final constant or non-public and provide accessors if needed.(ñÙ•Ó8™äô‹ü.
 v
-java:S1104"YMake cboxProfessor a static final constant or non-public and provide accessors if needed.(çÆÁë8æØ…âû.
-r
-java:S1104"UMake btnCancel a static final constant or non-public and provide accessors if needed.(ñÙ•Ó8æØ…âû.
-j
-java:S1192/"MDefine a constant instead of duplicating this literal "Naziv prazan" 3 times.(‚±õİ8¥Ñãû.
-s
-java:S1104"VMake fieldNaziv a static final constant or non-public and provide accessors if needed.(ÈšÁ³8æØ…âû.
-o
-java:S1104"RMake btnAdd a static final constant or non-public and provide accessors if needed.(‰ÂÈ8æØ…âû.
+java:S1192"VDefine a constant instead of duplicating this literal "Profesor nije izabran" 3 times.(õ£É‹øÿÿÿÿ8™äô‹ü.
+t
+java:S1104"YMake cboxProfessor a static final constant or non-public and provide accessors if needed.(çÆÁë8™äô‹ü.
+q
+java:S1104"VMake fieldNaziv a static final constant or non-public and provide accessors if needed.(ÈšÁ³8™äô‹ü.

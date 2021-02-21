@@ -1,9 +1,22 @@
 
-T
-java:S6126"2Replace this String concatenation with Text block.(¦åŞ—ûÿÿÿÿ8‹€­û.
-H
-java:S1168J"+Return an empty collection instead of null.(¥¹ï8çÈÊ’û.
-O
-java:S6126"2Replace this String concatenation with Text block.(«”³÷8‹€­û.
 B
-java:S3010"%Remove this assignment of "database".(¯çûõ8çÈÊ’û.
+java:S3010"%Remove this assignment of "database".(¯çûõ8¥Ñü.
+`
+java:S1068">Remove this unused "deleteDocumentsFromSubject" private field.(¦Ö”şÿÿÿÿ8¥Ñü.
+T
+java:S6126"2Replace this String concatenation with Text block.(¦åŞ—ûÿÿÿÿ8¥Ñü.
+X
+java:S1128
+";Remove this unused import 'java.net.MalformedURLException'.(ªËŞˆ8¿’Ûü.
+Q
+java:S1172f"/Remove this unused method parameter "document".(³Î×øÿÿÿÿ8Şª‘ü.
+H
+java:S1168N"+Return an empty collection instead of null.(¥¹ï8¥Ñü.
+O
+java:S6126#"2Replace this String concatenation with Text block.(«”³÷8¥Ñü.
+T
+java:S1128	"7Remove this unused import 'java.net.HttpURLConnection'.(¬¬˜­8¶Áš‘ü.
+T
+java:S1854h"7Remove this useless assignment to local variable "url".(êùØı8¶Áš‘ü.
+E
+java:S1481h"(Remove this unused "url" local variable.(êùØı8¶Áš‘ü.

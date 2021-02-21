@@ -1,11 +1,11 @@
 
-t
-java:S1104"WMake subjectList a static final constant or non-public and provide accessors if needed.(õøá«8ë†°ßû.
-y
-java:S1104"WMake searchField a static final constant or non-public and provide accessors if needed.(Û½ÃÎûÿÿÿÿ8ë†°ßû.
-O
-java:S1128"-Remove this unused import 'app.classes.User'.(êˆ´™ÿÿÿÿÿ8»ºßû.
-v
-java:S1104"YMake btnAddSubject a static final constant or non-public and provide accessors if needed.(™‘“8ë†°ßû.
 L
-java:S1066("/Merge this if statement with the enclosing one.(îƒ’Ë8ë†°ßû.
+java:S1066&"/Merge this if statement with the enclosing one.(îƒ’Ë8âÛÇü.
+y
+java:S1104"WMake searchField a static final constant or non-public and provide accessors if needed.(Û½ÃÎûÿÿÿÿ8âÛÇü.
+t
+java:S1104"WMake subjectList a static final constant or non-public and provide accessors if needed.(õøá«8âÛÇü.
+v
+java:S1104"YMake btnAddSubject a static final constant or non-public and provide accessors if needed.(™‘“8âÛÇü.
+N
+java:S1602q",Remove useless curly braces around statement(°Î“éùÿÿÿÿ8âÛÇü.

@@ -5,11 +5,17 @@ import app.classes.Subject;
 import app.classes.User;
 import app.settings.Database;
 
+import java.io.IOException;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class DocumentDAO {
     private static DocumentDAO instance;
@@ -89,9 +95,36 @@ public class DocumentDAO {
     public void delete(Document document) {
         try {
             deleteDocument.setInt(1, document.getId());
+            deleteFromServer(document);
             deleteDocument.execute();
         } catch (SQLException exception) {
             exception.printStackTrace();
+        }
+    }
+    public void deleteFromServer(Document document){
+        try {
+
+            URL url = new URL("http://localhost/fileupload/remove.php");
+            HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+            httpURLConnection.setRequestMethod("POST");
+            httpURLConnection.setDoOutput(true);
+            Map<String, String> args = new HashMap<>();
+            args.put("documentID",""+document.getId());
+            StringJoiner stringJoiner = new StringJoiner("&");
+            for(Map.Entry<String,String> entry : args.entrySet())
+                stringJoiner.add(URLEncoder.encode(entry.getKey(), "UTF-8") + "="
+                        + URLEncoder.encode(entry.getValue(), "UTF-8"));
+            byte[] out = stringJoiner.toString().getBytes(StandardCharsets.UTF_8);
+            int length = out.length;
+            httpURLConnection.setFixedLengthStreamingMode(length);
+            httpURLConnection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
+            httpURLConnection.connect();
+            try(OutputStream os = httpURLConnection.getOutputStream()) {
+                os.write(out);
+            }
+            httpURLConnection.getInputStream();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
     public void deleteFromSubject(Subject subject){
