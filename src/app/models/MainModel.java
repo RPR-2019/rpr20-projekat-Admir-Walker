@@ -47,7 +47,9 @@ public class MainModel {
         return filteredSubjects;
     }
     public List<Subject> fetchSubjects(){
-        return subjectDAO.fetchSubjects();
+        List<Subject> subjectList = subjectDAO.fetchSubjects();
+        subjects = FXCollections.observableArrayList(subjectList);
+        return subjectList;
     }
 
     public void delete(Subject subject) {
