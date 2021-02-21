@@ -1,9 +1,6 @@
 package app.controllers;
 
-import app.classes.Document;
-import app.classes.MenuPopUp;
-import app.classes.Subject;
-import app.classes.User;
+import app.classes.*;
 import app.models.AddMaterialModel;
 import app.models.DocumentDAO;
 import app.models.MaterialModel;
@@ -44,7 +41,10 @@ public class MaterialController implements MenuPopUp.ContextAction {
     @FXML
     public void initialize() {
         tableInit();
-        setupControls();
+        if(materialModel.getUserType().equals(UserType.PROFESSOR)){
+            setupControls();
+            btnAddMaterial.setOnMouseClicked(mouseEvent -> addMaterial());
+        }
         documentList.setOnMouseClicked(mouseEvent -> {
             if (mouseEvent.getButton() == MouseButton.PRIMARY && mouseEvent.getClickCount() > 1) {
                 if (documentList.getSelectionModel().getSelectedItem() != null) {
@@ -52,7 +52,6 @@ public class MaterialController implements MenuPopUp.ContextAction {
                 }
             }
         });
-        btnAddMaterial.setOnMouseClicked(mouseEvent -> addMaterial());
         searchField.textProperty().addListener((observableValue, s, t1) -> {
             if (t1 != null) {
                 documentList.setItems(materialModel.search(t1));

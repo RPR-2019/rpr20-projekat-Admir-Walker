@@ -3,10 +3,10 @@ package app.models;
 import app.classes.Document;
 import app.classes.Subject;
 import app.classes.User;
+import app.classes.UserType;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-import javax.print.Doc;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -66,5 +66,7 @@ public class MaterialModel {
     public void delete(Document document){
         documentDAO.delete(document);
     }
-
+    public UserType getUserType(){
+        return author.getUserType();
+    }
 }

@@ -59,10 +59,6 @@ l
 <out/production/RPRFinalniProjekat/fxml/downloadProgress.fxml,7\5\75c934d7b580ec1192bbcd0c918ca002c9f07bc0
 a
 1out/production/RPRFinalniProjekat/fxml/login.fxml,5\2\52e9097d4c683e5f8d3ac58689819ecb0761d222
-T
-$resources/fxml/downloadProgress.fxml,e\a\eaff10a6a1c2fc35e47579b6a503e05d5064a8f2
-I
-resources/fxml/login.fxml,8\2\82c591fb13b8d561beda7548c6e5f0df218b604c
 `
 0out/production/RPRFinalniProjekat/fxml/main.fxml,7\9\7990d5b5057c814f0f50bc97f80f1f38d6bad595
 d
@@ -77,14 +73,10 @@ Q
 -src/app/controllers/AddSubjectController.java,0\3\03ae06259ef6a2b67b96f4e0d1117112d8317fa8
 S
 #src/app/models/AddSubjectModel.java,a\0\a0fb82ddd519cde4988b982d6a85bed4332a3e8e
-H
-resources/fxml/main.fxml,1\7\1717211d21a149ed417a055ba59f01ec1c546de5
 f
 6out/production/RPRFinalniProjekat/fxml/addSubject.fxml,d\1\d19ea4c9e75d66b01d593a0c1b449d18292492fc
 N
 src/app/classes/MenuPopUp.java,a\2\a20ec34269dcbe06d67ef27d3517e9ebf96ad72c
-R
-"resources/fxml/detailsSubject.fxml,6\7\67c8b3459be620ca7e0199864f77a087f0fec2ac
 a
 1src/app/controllers/DetailsSubjectController.java,f\8\f82bb260aefe9a4334da4e0c7fd74fee50331c96
 j

@@ -2,6 +2,7 @@ package app.controllers;
 
 import app.classes.ErrorAlert;
 import app.classes.User;
+import app.classes.UserType;
 import app.models.MainModel;
 import app.models.SubjectDAO;
 import app.models.UserDAO;
@@ -34,7 +35,8 @@ public class LoginController {
         if (user != null) {
             MainModel mainModel = new MainModel(user, SubjectDAO.getInstance());
             MainController mainController = new MainController(mainModel);
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/main.fxml"));
+            String partOfPath = user.getUserType().equals(UserType.PROFESSOR) ? "professors" : "users";
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/"+partOfPath+"/main.fxml"));
             loader.setController(mainController);
             Parent root = loader.load();
             Stage stage = new Stage();

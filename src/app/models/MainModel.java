@@ -2,6 +2,7 @@ package app.models;
 
 import app.classes.Subject;
 import app.classes.User;
+import app.classes.UserType;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -54,5 +55,8 @@ public class MainModel {
 
     public void delete(Subject subject) {
         subjectDAO.delete(subject);
+    }
+    public UserType getUserType(){
+        return user.getUserType();
     }
 }

@@ -2,6 +2,7 @@ package app.controllers;
 
 import app.classes.MenuPopUp;
 import app.classes.Subject;
+import app.classes.UserType;
 import app.models.*;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
@@ -45,24 +46,26 @@ public class MainController implements MenuPopUp.ContextAction {
                 subjectList.setItems(mainModel.search(t1));
             }
         });
-        btnAddSubject.setOnMouseClicked(mouseEvent -> {
-            try {
-                AddSubjectModel addSubjectModel = new AddSubjectModel(UserDAO.getInstance(), SubjectDAO.getInstance());
-                AddSubjectController addSubjectController = new AddSubjectController(addSubjectModel);
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/addSubject.fxml"));
-                loader.setController(addSubjectController);
-                Parent root = loader.load();
-                Stage stage = new Stage();
-                stage.setOnHiding(windowEvent -> setSubjectListItems());
-                stage.setTitle("Dodaj predmet");
-                stage.setScene(new Scene(root, Region.USE_COMPUTED_SIZE, Region.USE_COMPUTED_SIZE));
-                stage.show();
-            } catch (SQLException | IOException exception) {
-                exception.printStackTrace();
-            }
+       if(mainModel.getUserType().equals(UserType.PROFESSOR)){
+           setupControls();
+           btnAddSubject.setOnMouseClicked(mouseEvent -> {
+               try {
+                   AddSubjectModel addSubjectModel = new AddSubjectModel(UserDAO.getInstance(), SubjectDAO.getInstance());
+                   AddSubjectController addSubjectController = new AddSubjectController(addSubjectModel);
+                   FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/addSubject.fxml"));
+                   loader.setController(addSubjectController);
+                   Parent root = loader.load();
+                   Stage stage = new Stage();
+                   stage.setOnHiding(windowEvent -> setSubjectListItems());
+                   stage.setTitle("Dodaj predmet");
+                   stage.setScene(new Scene(root, Region.USE_COMPUTED_SIZE, Region.USE_COMPUTED_SIZE));
+                   stage.show();
+               } catch (SQLException | IOException exception) {
+                   exception.printStackTrace();
+               }
 
-        });
-        setupControls();
+           });
+        }
     }
     private void setSubjectListItems(){
         subjectList.setItems(FXCollections.observableArrayList(mainModel.fetchSubjects()));
@@ -71,7 +74,8 @@ public class MainController implements MenuPopUp.ContextAction {
         try {
             MaterialModel materialModel = new MaterialModel(mainModel.getUser(), subjectList.getSelectionModel().getSelectedItem(), DocumentDAO.getInstance());
             MaterialController materialController = new MaterialController(materialModel);
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/material.fxml"));
+            String partOfPath = materialModel.getUserType().equals(UserType.PROFESSOR) ? "professors" : "users";
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/"+partOfPath+"/material.fxml"));
             loader.setController(materialController);
             Parent root = loader.load();
             Stage stage = new Stage();
