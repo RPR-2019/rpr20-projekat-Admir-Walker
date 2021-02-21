@@ -17,11 +17,15 @@ public class SubjectDAO {
 
     private PreparedStatement fetchAllSubjects;
     private PreparedStatement addSubject;
+    private PreparedStatement deleteSubject;
+    private PreparedStatement updateSubject;
 
     private SubjectDAO() throws SQLException {
         database = Database.getInstance();
         fetchAllSubjects = database.addPreparedStatement("select * from subject order by name asc;");
         addSubject = database.addPreparedStatement("insert into subject(name,professor) values (?, ?);");
+        deleteSubject = database.addPreparedStatement("delete from subject where subjectID = ?;");
+        updateSubject = database.addPreparedStatement("update subject set name = ?, professor = ? where subjectID = ?;");
     }
 
     public static SubjectDAO getInstance() throws SQLException {
@@ -72,5 +76,28 @@ public class SubjectDAO {
         } catch (SQLException exception) {
             exception.printStackTrace();
         }
+    }
+
+    public void delete(Subject subject) {
+        try {
+            deleteSubject.setInt(1, subject.getId());
+            deleteSubject.execute();
+            // Trebalo bi sve materijale vezane za ovaj predmet obrisati :)
+        } catch (SQLException exception) {
+            exception.printStackTrace();
+        }
+    }
+
+    public void updateSubject(Subject currentSubject) {
+        try {
+            updateSubject.setString(1, currentSubject.getName());
+            updateSubject.setInt(2, currentSubject.getProfessorId());
+            updateSubject.setInt(3, currentSubject.getId());
+
+            updateSubject.execute();
+        } catch (SQLException exception) {
+            exception.printStackTrace();
+        }
+
     }
 }

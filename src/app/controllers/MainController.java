@@ -64,6 +64,7 @@ public class MainController implements MenuPopUp.ContextAction {
             }
 
         });
+        setupControls();
     }
     private void setSubjectListItems(){
         subjectList.setItems(FXCollections.observableArrayList(mainModel.fetchSubjects()));
@@ -104,10 +105,32 @@ public class MainController implements MenuPopUp.ContextAction {
         }
     }
     private void openDetails(Subject subject) {
-
+        try {
+            DetailsSubjectModel detailsSubjectModel = new DetailsSubjectModel(subject, SubjectDAO.getInstance(), UserDAO.getInstance());
+            DetailsSubjectController detailsSubjectController = new DetailsSubjectController(detailsSubjectModel);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/detailsSubject.fxml"));
+            loader.setController(detailsSubjectController);
+            Parent root = loader.load();
+            Stage stage = new Stage();
+            stage.setOnHiding(windowEvent -> {
+                setSubjectListItems();
+            });
+            stage.setTitle("Detalji o dokumentu");
+            stage.setScene(new Scene(root, Region.USE_COMPUTED_SIZE, Region.USE_COMPUTED_SIZE));
+            stage.show();
+        } catch (IOException | SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     private void deleteDocument(Subject subject) {
-
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Upozorenje o brisanju");
+        alert.setContentText("Da li zelite obrisati");
+        alert.showAndWait();
+        if (alert.getResult().getButtonData().isDefaultButton()) {
+            mainModel.delete(subject);
+            setSubjectListItems();
+        }
     }
 }

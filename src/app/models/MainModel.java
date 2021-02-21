@@ -49,4 +49,8 @@ public class MainModel {
     public List<Subject> fetchSubjects(){
         return subjectDAO.fetchSubjects();
     }
+
+    public void delete(Subject subject) {
+        subjectDAO.delete(subject);
+    }
 }

@@ -18,6 +18,7 @@ public class DocumentDAO {
     private PreparedStatement fetchDocuments;
     private PreparedStatement updateDocument;
     private PreparedStatement deleteDocument;
+    private PreparedStatement deleteDocumentsFromSubject;
 
     private DocumentDAO() throws SQLException {
         database = Database.getInstance();
@@ -33,10 +34,9 @@ public class DocumentDAO {
                 "subject = ?\n" +
                 "where documentID = ?;"
         );
-        deleteDocument = database.addPreparedStatement(
-                "delete from document\n" +
-                "where documentID = ?;"
-        );
+        deleteDocument = database.addPreparedStatement("delete from document where documentID = ?;");
+        deleteDocumentsFromSubject = database.addPreparedStatement("delete from document where subject = ?;");
+
     }
 
     public static DocumentDAO getInstance() throws SQLException {
@@ -93,6 +93,9 @@ public class DocumentDAO {
         } catch (SQLException exception) {
             exception.printStackTrace();
         }
+    }
+    public void deleteFromSubject(Subject subject){
+        // TO-DO
     }
 }
 

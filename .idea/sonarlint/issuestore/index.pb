@@ -73,8 +73,6 @@ M
 src/app/models/MainModel.java,0\1\01ba87bf5035a18567b3ac4f2e9919a891ebc997
 Q
 !src/app/models/MaterialModel.java,a\1\a1676bb6bdcce9f51da472a6ab65523355d1412c
-N
-resources/fxml/addSubject.fxml,b\7\b76a70b1a52e90e365875c55e1c51535d3f50255
 ]
 -src/app/controllers/AddSubjectController.java,0\3\03ae06259ef6a2b67b96f4e0d1117112d8317fa8
 S
